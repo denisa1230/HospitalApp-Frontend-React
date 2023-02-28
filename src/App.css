@@ -1,0 +1,111 @@
+.login-form{
+  background-color:whitesmoke;
+  max-width:300px;
+  padding:15px;
+  margin:auto;
+  margin-top: 5%;
+  height: 150%;
+  color:black;
+}
+div.c {
+  text-indent: 200px;
+}
+div.b {
+  text-indent: 30px;
+}
+.login-label{
+  margin-left:4px;
+}
+
+.add-label{
+  margin-left:4px;
+  margin-right: 10px;
+  color:#32cd32;
+}
+
+.register-label{
+  margin-left:4px;
+  color:red
+}
+
+.span{
+  align-content: center;
+}
+
+.buttonNotification {
+  border-radius: 50%;
+  font-size: 9px;
+  text-align: center;
+  color:white;
+  background-color:#32cd32;
+  border:none;
+  margin-left: 2px;
+}
+
+.register-form{
+  background-color:whitesmoke;
+  max-width:500px;
+  padding:15px;
+  margin:auto;
+  height: 150%;
+  color:black;
+}
+.register-form2{
+  background-color:whitesmoke;
+  max-width:500px;
+  padding:15px;
+  margin-left:623px;
+  height: 150%;
+  color:black;
+}
+
+.blank-label{
+  color:white
+}
+
+.search-form{
+  max-width:700px;
+  padding:15px;
+  margin-left:20px;
+  height: 150%;
+  color:black;
+  background-color: transparent;
+}
+
+.active-form{
+  max-width:300px;
+  padding:15px;
+  margin-left:20px;
+  height: 150%;
+  color:black;
+}
+.button3 {
+  display: inline-block;
+  align-self:center;
+  margin-left: 50%;
+  margin-top:1%;
+  padding: 5px 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color:#008000;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button2{
+  border-radius:50%;
+  background-color:#B22222;
+  color:#fff;
+  outline:none;
+  cursor:pointer;
+  text-align:center;
+  font-size:18px;
+  border:none;
+  margin:20px;
+  box-shadow: 0 9px #999;
+}
