@@ -6,14 +6,7 @@ import BackgroundImg from '../Admin/section.jpg';
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Hospital from './Hospital';
 
-const backgroundStyle = {
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    width: "100%",
-    height: "100%",
-    backgroundImage: `url(${BackgroundImg})`
-};
+
 
 class AddSection extends React.Component{
     constructor(){
@@ -66,7 +59,8 @@ class AddSection extends React.Component{
             <div>
                  <AdminNavBar
                 notificationPage="false"/>
-                <Jumbotron fluid style={backgroundStyle}>
+                <div className='jumbotron' >
+                <Jumbotron  >
                 <UpdateSection
                 title="Create Section"
                 buttonName="Submit"
@@ -74,6 +68,7 @@ class AddSection extends React.Component{
                 section={this.state.section}
                 handleSubmit={this.handleSubmit}/>
                 </Jumbotron>
+                </div>
             </div>
         )
     }

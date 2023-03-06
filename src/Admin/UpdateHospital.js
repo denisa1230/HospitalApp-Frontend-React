@@ -46,6 +46,7 @@ class UpdateHospital extends React.Component{
                                type="text"
                                name="name"
                                onChange={this.handleChange}
+                               placeholder="Hospital Name"
                         />
                     </FormGroup>
                     <FormGroup>
@@ -55,6 +56,7 @@ class UpdateHospital extends React.Component{
                                type="text"
                                name="address"
                                onChange={this.handleChange}
+                               placeholder="Address"
                         />
                     </FormGroup>
                     <FormGroup>
@@ -64,6 +66,7 @@ class UpdateHospital extends React.Component{
                                type="text"
                                name="locality"
                                onChange={this.handleChange}
+                               placeholder="Locality"
                         />
                     </FormGroup>
                     <FormGroup>
@@ -73,6 +76,7 @@ class UpdateHospital extends React.Component{
                                type="text"
                                name="county"
                                onChange={this.handleChange}
+                               placeholder="County"
                         />
                     </FormGroup>
                     <FormGroup>
@@ -82,6 +86,7 @@ class UpdateHospital extends React.Component{
                                type="text"
                                name="country"
                                onChange={this.handleChange}
+                               placeholder="Country"
                         />
                     </FormGroup>
 

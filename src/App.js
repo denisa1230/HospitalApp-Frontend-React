@@ -15,6 +15,10 @@ import Medicines from "./Admin/Medicines";
 import AddSection from "./Admin/AddSection";
 import UpdateSection from "./Admin/UpdateSection";
 import Sections from "./Admin/Sections";
+import ApproveMedicine from './Admin/ApproveMedicine';
+import AddMedicineDoctor from './Doctor/AddMedicineDoctor';
+import ViewMedicineDoctor from './Doctor/ViewMedicineDoctor';
+import DoctorHome from './Doctor/DoctorHome';
 
 
 function App() {
@@ -35,6 +39,10 @@ function App() {
                         <Route exact path="/AddSection" component={AddSection}/>
                         <Route exact path="/UpdateSection" component={UpdateSection}/>
                         <Route exact path="/Sections" component={Sections}/>
+                        <Route exact path="/ApproveMedicine" component={ApproveMedicine}/>
+                        <Route exact path="/AddMedicineDoctor" component={AddMedicineDoctor}/>
+                        <Route exact path="/ViewMedicineDoctor" component={ViewMedicineDoctor}/>
+                        <Route exact path="/DoctorHome" component={DoctorHome}/>
                     </BrowserRouter>
                     </div>
   );

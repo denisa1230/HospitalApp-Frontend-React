@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import { FaUser,FaLock } from "react-icons/fa";
 import axios from "axios"
 import isEmail from 'validator/lib/isEmail';
-import BackgroundImg from "./hospital2.jpg";
+import BackgroundImg from "./firstPage.png";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import NotLoggedNavBar from "../navBars/NotLoggedNavBar";
 

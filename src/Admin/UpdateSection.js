@@ -1,7 +1,7 @@
 import React from "react"
 import {Form,FormGroup,Input,Label,Button} from "reactstrap"
 import axios from "axios"
-import Hospital from "./Hospital"
+import Jumbotron from "react-bootstrap/Jumbotron";
 
 class UpdateSection extends React.Component{
     constructor(props){
@@ -11,7 +11,7 @@ class UpdateSection extends React.Component{
             title:props.title,
             buttonName:props.buttonName,
             section:props.section,
-            selectedHospital:{}
+            selectedHospital:props.section.hospital.name
             
             
         }
@@ -34,7 +34,6 @@ class UpdateSection extends React.Component{
 
 
     getHospital(event){
-        console.log("test  " + event.target.value)
         const {name,value}=event.target
         var hospitals = this.props.hospitals
         var newHospital
@@ -59,7 +58,8 @@ class UpdateSection extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="jumbotron">
+                <Jumbotron>
                <Form className="login-form">
 
                      <h3>
@@ -74,6 +74,7 @@ class UpdateSection extends React.Component{
                          type="text"
                          name="name"
                          onChange={this.handleChange}
+                         placeholder="Section Name"
                           />
                     </FormGroup>
                     <FormGroup>
@@ -92,7 +93,7 @@ class UpdateSection extends React.Component{
                     <Button className="btn-lg btn-block btn-succes" 
                     onClick={this.props.handleSubmit.bind(this.props,this.state.section)}>{this.state.buttonName}</Button>
                 </Form>
-
+                </Jumbotron>
             </div>
         )
     }

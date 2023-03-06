@@ -6,6 +6,7 @@ import axios from "axios"
 import isEmail from 'validator/lib/isEmail';
 import AdminNavBar from "../navBars/AdminNavBar"
 import BackgroundImg from "../Admin/doctor.jpg";
+import Swal from 'sweetalert2';
 
 
 class AddDoctor extends React.Component{
@@ -13,74 +14,71 @@ class AddDoctor extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            username:"",
+            email:"",
             password1:"",
             password2:"",
             firstname:"",
-            secondname:"",
-            address:"",
+            lastname:"",
             email:"",
-            usernameExist:"false",
-            usernameNotMail:"false",
+            specialization:"",
+            section:"",
+            emailExist:"false",
+            emailNotMail:"false",
             passwordError:"true",
             savedUser:{},
             hospitals:[],
+            sections:[],
             uniqueHospitals:[],
-            hospitalsAddress:[],
-            selectedCity:{},
+            uniqueSections:[],
             selectedHospital:"",
-            selectedAddress:"",
+            selectedSections:[],
+            selectedSection:{},
             insertHospital:{},
-            counties:[],
-            selectedCities:[],
-            city:""
         }
         this.handleChange=this.handleChange.bind(this)
         this.handleClick=this.handleClick.bind(this)
-        this.handleHospital=this.handleHospital.bind(this)
-        this.handleHospitalAddress=this.handleHospitalAddress.bind(this)
-        this.handleCounty=this.handleCounty.bind(this)
-        this.handleCity=this.handleCity.bind(this)
+        this.getSection=this.getSection.bind(this)
+        this.getHospital=this.getHospital.bind(this)
+        this.handleSelectedHospital=this.handleSelectedHospital.bind(this)
+        this.handleSelectedSection = this.handleSelectedSection.bind(this)
     }
 
-    
-
-    
+    componentDidMount(){
+        this.getSection();
+        this.getHospital();
+    }
 
     handleClick(){
-        if(isEmail(this.state.username)){
+        if(isEmail(this.state.email)){
         this.setState({
-            usernameNotMail:"false"
+            emailNotMail:"false"
         })
-        axios.get(`http://localhost:8080/user/getUser/${this.state.username}`).then(response=>{
-            if(response.data.username!=="null") this.setState({
-                usernameExist:"true"
+        axios.get(`http://localhost:8080/account/getAccountByEmail/${this.state.email}`).then(response=>{
+            if(response.data!=="") this.setState({
+                emailExist:"true"
             })
             else{
                 this.setState({
-                    usernameExist:"false"
+                    emailExist:"false"
                 })
                 if(this.state.password1===this.state.password2){
                     this.setState({
                         passwordError:"true"
                     })
-                    axios.post(`http://localhost:8080/user/saveUser`,{
-                        username:this.state.username,
+                    axios.post(`http://localhost:8080/account/createDoctorAccount`,{
+                        email:this.state.email,
                         password:this.state.password1,
-                        type:"doctor"
+                        doctor:{
+                            firstName:this.state.firstname,
+                            lastName:this.state.lastname,
+                            email:this.state.email,
+                            specialization:this.state.specialization,
+                            section:this.state.selectedSection
+                        }
                     }).then(response=>{
-                        console.log(response.data)
-                        console.log(this.state.insertHospital)
-                            axios.post(`http://localhost:8080/account/saveDoctor`,{
-                                firstname:this.state.firstname,
-                                secondname:this.state.secondname,
-                                email:this.state.username,
-                                address:this.state.address,
-                                userId:response.data,
-                                 hospital:this.state.insertHospital
-                        }).then(response=>{
-                            this.props.history.push("/AdminHome")
-                        })
+                       Swal.fire('Doctor added')
+                       this.props.history.push("/AdminHome")
+                    
                     })
                 }
                 else this.setState({
@@ -90,7 +88,7 @@ class AddDoctor extends React.Component{
             }
         })}
         else this.setState({
-            usernameNotMail:"true"
+            emailNotMail:"true"
         })
     }
 
@@ -101,76 +99,74 @@ class AddDoctor extends React.Component{
         })
     }
 
-    handleHospital(event){
-        console.log(event.target.value)
-        var addressList=[]
-        this.state.hospitals.forEach(hospital=>{
-            if(hospital.name===event.target.value)
-                addressList.push(hospital.address)
-        })
+    getSection(){
+        axios.get("http://localhost:8080/section/findAllSections").then(response=>{
+            var sectionList=[]
+        for(var i=0;i<response.data.length;i++){
+           sectionList.push(response.data[i])
+        }
+        console.log(sectionList)
         this.setState({
-            hospitalsAddress:addressList,
-            selectedHospital:event.target.value
+            sections:sectionList
+        })
+    
         })
     }
 
-    handleHospitalAddress(event){
-        console.log(event.target.value)
-        var newHospital
-        this.state.hospitals.forEach(hospital=>{
-            if(hospital.name===this.state.selectedHospital && hospital.address===event.target.value)
-                newHospital=hospital
-        })
+    getHospital(){
+        axios.get("http://localhost:8080/hospital/findAllHospital").then(response=>{
+            var hospitalList=[]
+        for(var i=0;i<response.data.length;i++){
+           hospitalList.push(response.data[i])
+        }
+        console.log(hospitalList)
         this.setState({
-            insertHospital:newHospital
+            hospitals:hospitalList
+        })
+    
+        })
+    }
+
+    handleSelectedHospital(event){
+        const {name,value}=event.target
+        var hospitals = this.state.hospitals
+        var newHospital
+        for(var i = 0; i < hospitals.length; i++) {
+            if (value === hospitals[i].name) {
+                newHospital=hospitals[i]
+            }
+        }
+        this.setState({
+             selectedHospital:newHospital.name
+            }
+         )
+         var sections=this.state.sections
+         var selectedSectionsByHospital=[]
+        for (var i=0;i< sections.length;i++){
+            if (newHospital.idHospital === sections[i].hospital.idHospital){
+                selectedSectionsByHospital.push(sections[i])
+            }
+        }
+        this.setState({
+            selectedSections:selectedSectionsByHospital
+        })
+    }
+
+    handleSelectedSection(event){
+        const {name,value}=event.target
+        var sections=this.state.selectedSections
+        var section={}
+        for (var i=0;i< sections.length;i++){
+            if (value === sections[i].name){
+                section=sections[i]
+            }
+        }
+        this.setState({
+            selectedSection:section
         })
     }
 
    
-    handleCity(event){
-        var selectedCity={}
-        for(var i=0;i<this.state.cities.length;i++){
-            if(this.state.cities[i].county===this.state.county && this.state.cities[i].name===event.target.value)
-                selectedCity=this.state.cities[i]
-        }
-        this.setState({
-            selectedCity:selectedCity
-        })
-        axios.get("http://localhost:8080/hospital/findAllHospital").then(response=>{
-            console.log(response.data)
-            var Hospitals=[]
-            for(var i=0;i<response.data.length;i++){
-                if(response.data[i].cityId.id===selectedCity.id){
-                    var ok=0
-                    for(var j=0;j<Hospitals.length;j++)
-                        if(Hospitals[j]===response.data[i].name) ok=1
-                    if(ok===0) Hospitals.push(response.data[i].name)
-                }
-            }
-            console.log(Hospitals)
-            this.setState({
-               hospitals:response.data,
-                uniqueHospitals:Hospitals
-            })
-
-        })
-
-
-    }
-    handleCounty(event){
-        console.log(event.target.value)
-        this.setState({
-            county:event.target.value
-        })
-        var citiesByCounty=[]
-        for(var i=0;i<this.state.cities.length;i++){
-            if(this.state.cities[i].county===event.target.value) citiesByCounty.push(this.state.cities[i].name)
-        }
-        this.setState({
-            selectedCities:citiesByCounty
-        })
-    }
-
 
     render(){
         return(
@@ -189,30 +185,21 @@ class AddDoctor extends React.Component{
                     <Row form>
                         <Col md={6}>
                     <FormGroup>
-                        {this.state.usernameNotMail==="true" ?
+                        {this.state.emailNotMail==="true" ?
                          <Label className="register-label">Not a valid email address*</Label> :
-                        this.state.usernameExist==="false" ?
+                        this.state.emailExist==="false" ?
                                                 <Label className="login-label">Email</Label>
                                                     :
                                                 <Label className="register-label">Email already exist*</Label>}
                         <Input className="input" type="text"
-                        name="username"
+                        name="email"
                         onChange={this.handleChange}
-                        value={this.state.username}
-                        placeholder="Username"
+                        value={this.state.email}
+                        placeholder="Email"
                         />
                     </FormGroup>
                     </Col>
                     <Col md={6}>
-                    <FormGroup>
-                        <Label className="login-label">Address</Label>
-                        <Input className="input" type="text"
-                        name="address"
-                        onChange={this.handleChange}
-                        value={this.state.address}
-                        placeholder="Address"
-                        />
-                    </FormGroup>
                     </Col>
                     </Row>
                     <Row form>
@@ -261,52 +248,47 @@ class AddDoctor extends React.Component{
                     <FormGroup>
                         <Label className="login-label">Second Name</Label>
                         <Input className="input" type="text"
-                        name="secondname"
+                        name="lastname"
                         onChange={this.handleChange}
-                        value={this.state.secondname}
+                        value={this.state.lastname}
                         placeholder="Second name"
                         />
                     </FormGroup>
                     </Col>
                     </Row>
-                    <FormGroup>
-                            <Label className="login-label">County</Label>
-                        <Input className="input" type="text" name="county"
-                        onChange={this.handleChange}
-                        value={this.state.county}
-                        placeholder="County"
-                        />  
-                    </FormGroup>
                             <FormGroup>
-                            <Label className="login-label">City</Label>
-                        <Input className="input" type="text" name="city"
+                            <Label className="login-label">Specialization</Label>
+                        <Input className="input" type="text" name="specialization"
                         onChange={this.handleChange}
-                        value={this.state.city}
-                        placeholder="City"
+                        value={this.state.specialization}
+                        placeholder="Specialization"
                         />  
-                    </FormGroup>
-                            <FormGroup>
+                        </FormGroup>
+                        <FormGroup>
                                 <Label >Hospital</Label>
                                 <Input type="select"
                                 name="hospital"
-                                onChange={this.handleHospital}
+                                value={this.state.selectedHospital}
+                                onChange={this.handleSelectedHospital}
                                 >
-                                    <option>Select Hospital</option>
-                                {this.state.uniqueHospitals.map(hospital=>
-                                    <option>{hospital}</option>)}
+                                    <option >Select Hospital</option>
+                                {this.state.hospitals.map(hospital=>
+                                    <option>{hospital.name}</option>)}
                                 </Input>
                             </FormGroup>
                             <FormGroup>
-                                <Label >Address</Label>
+                                <Label >Section</Label>
                                 <Input type="select"
-                                name="hospital"
-                                onChange={this.handleHospitalAddress}
+                                name="section"
+                                value={this.state.selectedSection.name}
+                                onChange={this.handleSelectedSection}
                                 >
-                                    <option>Select hospital Address</option>
-                                {this.state.hospitalsAddress.map(hospitalAddress=>
-                                    <option>{hospitalAddress}</option>)}
+                                    <option>Select Section</option>
+                                {this.state.selectedSections.map(section=>
+                                    <option>{section.name}</option>)}
                                 </Input>
                             </FormGroup>
+                           
 
                     <Button className="btn-lg btn-dark btn-block"
                     onClick={this.handleClick}>Submit</Button>

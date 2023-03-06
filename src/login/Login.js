@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import { FaUser,FaLock } from "react-icons/fa";
 import axios from "axios"
 import NotLoggedNavBar from "../navBars/NotLoggedNavBar.js";
-import BackgroundImg from '../login/hospital2.jpg';
+import BackgroundImg from '../login/firstPage.png';
 import Jumbotron from "react-bootstrap/Jumbotron";
 
 const backgroundStyle = {
@@ -14,6 +14,7 @@ const backgroundStyle = {
     width: "100%",
     height: "100%",
     backgroundImage: `url(${BackgroundImg})`
+   
 };
 
 const textStyle = {color: '#48d1cc',  fontWeight: 'bold' };

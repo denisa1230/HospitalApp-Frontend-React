@@ -2,7 +2,7 @@ import React from 'react';
 import AdminNavBar from "../navBars/AdminNavBar"
 import UpdateHospital from "./UpdateHospital"
 import axios from "axios"
-import BackgroundImg from '../login/hospital.jpg';
+import BackgroundImg from '../Admin/AddHospital.jpg';
 import Jumbotron from "react-bootstrap/Jumbotron";
 
 const backgroundStyle = {

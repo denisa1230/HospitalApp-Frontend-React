@@ -7,7 +7,7 @@ import "react-table-6/react-table.css"
 import {Button, Col, Container, Row} from "reactstrap"
 import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
-import BackgroundImg from '../Admin/tabelee.jpg';
+import BackgroundImg from '../Admin/AddHospital.jpg';
 
 const textStyle = {color: 'black',  fontWeight: 'bold' };
 const backgroundStyle = {
@@ -76,8 +76,7 @@ class Hospital extends React.Component{
         return(
             <div>
                 <AdminNavBar
-                notificationPage="false"/>
-                <Container fluid style={backgroundStyle}>
+                notificationPage="false"/> <Container fluid style={backgroundStyle}>
                     <div className="c"><h1 className=  "display-3" style={textStyle}  ><center> Update/Delete Hospital</center></h1></div>
                 {this.state.update==="false" ?
                 <div><br></br><br></br>

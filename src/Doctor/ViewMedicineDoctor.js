@@ -1,9 +1,7 @@
 import React from "react"
 import {Form,FormGroup,Input,Label,Button} from "reactstrap"
-import axios from "axios"
-import { Jumbotron } from "react-bootstrap"
 
-class UpdateMedication extends React.Component{
+class ViewMedicineDoctor extends React.Component{
     constructor(props){
         super()
         console.log(props)
@@ -32,8 +30,8 @@ class UpdateMedication extends React.Component{
 
     render(){
         return(
-            <div className="jumbotron">
-                <Jumbotron></Jumbotron>
+          
+               
                <Form className="login-form">
 
                      <h3>
@@ -65,10 +63,8 @@ class UpdateMedication extends React.Component{
                     <Button className="btn-lg btn-block btn-succes" 
                     onClick={this.props.handleSubmit.bind(this.props,this.state.medicine)}>{this.state.buttonName}</Button>
                 </Form>
-
-            </div>
         )
     }
 }
 
-export default UpdateMedication
+export default ViewMedicineDoctor

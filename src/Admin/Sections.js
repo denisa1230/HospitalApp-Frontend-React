@@ -6,7 +6,7 @@ import "react-table-6/react-table.css"
 import {Button, Col, Container, Row} from "reactstrap"
 import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
-import BackgroundImg from '../Admin/section.jpg';
+import BackgroundImg from '../Admin/drug.jpg';
 import UpdateSection from "./UpdateSection"
 
 const textStyle = {color: 'black',  fontWeight: 'bold' };
@@ -25,16 +25,33 @@ class Sections extends React.Component{
         this.state={
             update:"false",
             sections:[],
+            hospitals:[],
             selected:0
         }
         this.handleUpdate=this.handleUpdate.bind(this)
         this.handleDelete=this.handleDelete.bind(this)
         this.getSections=this.getSections.bind(this)
         this.handleSubmit=this.handleSubmit.bind(this)
+        this.getHospitals=this.getHospitals.bind(this)
     }
 
     componentDidMount(){
         this.getSections()
+        this.getHospitals()
+    }
+
+    getHospitals(){
+        axios.get("http://localhost:8080/hospital/findAllHospital").then(response=>{
+            var hospitalList=[]
+        for(var i=0;i<response.data.length;i++){
+           hospitalList.push(response.data[i])
+        }
+        console.log(hospitalList)
+        this.setState({
+            hospitals:hospitalList
+        })
+    
+        })
     }
 
 
@@ -64,13 +81,17 @@ class Sections extends React.Component{
     }
 
     handleSubmit(value){
-            axios.post("http://localhost:8080/section/updateSection",value
-            ).then(response=>{
+        console.log(value)
+       
+
+            axios.post("http://localhost:8080/section/updateSection",value).then(response=>{
                 this.getSections()
+
                 this.setState({
                     update:"false"
                 })
             })
+        
     }
 
     
@@ -123,7 +144,8 @@ class Sections extends React.Component{
             <UpdateSection
             title="Update section"
             buttonName="Update"
-            sections={this.state.sections[this.state.selected]}
+            section={this.state.sections[this.state.selected]}
+            hospitals={this.state.hospitals}
             handleSubmit={this.handleSubmit}/>}
             </Container>   </div>
         )

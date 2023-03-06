@@ -7,7 +7,7 @@ import "react-table-6/react-table.css"
 import {Button, Col, Container, Row} from "reactstrap"
 import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
-import BackgroundImg from '../Admin/drug.jpg';
+import BackgroundImg from '../Admin/medicine.jpg';
 
 const textStyle = {color: 'black',  fontWeight: 'bold' };
 const backgroundStyle = {
@@ -19,18 +19,17 @@ const backgroundStyle = {
     backgroundImage: `url(${BackgroundImg})`
 };
 
-class Medicine extends React.Component{
+class ApproveMedicine extends React.Component{
     constructor(){
         super()
         this.state={
             update:"false",
+            medicationToBeUpdated:{},
             medications:[],
             selected:0
         }
-        this.handleUpdate=this.handleUpdate.bind(this)
-        this.handleDelete=this.handleDelete.bind(this)
+        this.handleApprove=this.handleApprove.bind(this)
         this.getMedicines=this.getMedicines.bind(this)
-        this.handleSubmit=this.handleSubmit.bind(this)
     }
 
     componentDidMount(){
@@ -39,59 +38,40 @@ class Medicine extends React.Component{
 
 
     getMedicines(){
-       axios.get("http://localhost:8080/drug/findAllDrug").then(response=>{
+        axios.get("http://localhost:8080/drug/findAllDrug").then(response=>{
             console.log(response.data)
             var allMedicines=response.data
             var pendingMedicines=[]
             for(var i=0;i<allMedicines.length;i++){
-                if(allMedicines[i].status==="AVAILABLE") 
-                pendingMedicines.push(allMedicines[i])
+                if(allMedicines[i].status==="PENDING") pendingMedicines.push(allMedicines[i])
             }
             this.setState({
                 medications:pendingMedicines
             })
         })
-       
-           
-    }
-   
-
-
-    handleDelete(){
-        axios.get(`http://localhost:8080/drug/deleteDrug/${this.state.medications[this.state.selected].idDrug}`).then(response=>{
-            this.getMedicines()
-        })
     }
 
-    handleUpdate(){
-       this.setState({
-           update:"true"
-       })
-    }
-
-    handleSubmit(value){
-        console.log(value)
-       
-
-            axios.post("http://localhost:8080/drug/updateDrug",value).then(response=>{
-                this.getMedicines()
-                this.setState({
-                    update:"false"
-                })
-            })
+    handleApprove(status){
+      var approvedMedicine=this.state.medications[this.state.selected]
+      axios.post("http://localhost:8080/drug/updateDrug",{
+        idDrug:approvedMedicine.idDrug,
+        drugName:approvedMedicine.drugName,
+        dosage:approvedMedicine.dosage,
+        status:status
+      }).then(response=>{
+        this.getMedicines()
+    })
 
     }
-   
-  
 
     render(){
         return(
             <div>
-                 <AdminNavBar
-                notificationPage="false"/> <Container fluid style={backgroundStyle}>
-                <div className="c"><h1 className=  "display-3" style={textStyle}><center> Update/Delete Medicines</center></h1></div>
-                {this.state.update==="false" ?
-                <div><br/><br/><br></br>
+                <AdminNavBar
+                notificationPage="true"/>
+                <Container fluid style={backgroundStyle}>
+                    <div className="c"><h1 className=  "display-3" style={textStyle}><center> Approve Medicine</center></h1></div>
+                <div><br/><br/>
                     <Row><Col ssm="6" md={{ size: 8, offset: 3 }}><Card><CardBody>
                <ReactTable
                defaultPageSize={10}
@@ -100,12 +80,7 @@ class Medicine extends React.Component{
                    {
                        Header:"Name",
                        accessor:"drugName"
-                   },
-                   {
-                       Header:"Dosage",
-                       accessor:"dosage"
                    }
-
                ]}
                getTrProps={(state, rowInfo) => {
                 if (rowInfo && rowInfo.row) {
@@ -125,19 +100,14 @@ class Medicine extends React.Component{
                 }
               }}
               />
-            <button className="button3" onClick={this.handleUpdate}>Update</button>
-            <button className="button2" onClick={this.handleDelete}>X</button>
-                    </CardBody></Card></Col></Row><br/><br/>
+            <button className="button3" onClick={this.handleApprove.bind(this,'AVAILABLE')}>Approve</button>
+            <button className="button2" onClick={this.handleApprove.bind(this,'UNAVAILABLE')}>Decline</button>
+                    </CardBody></Card></Col></Row> </div>   <br/><br/>
+                </Container>
+
             </div>
-                    :
-            <UpdateMedication
-            title="Update medicine"
-            buttonName="Update"
-            medication={this.state.medications[this.state.selected]}
-            handleSubmit={this.handleSubmit}/>}
-            </Container>   </div>
         )
     }
 }
 
-export default Medicine
+export default ApproveMedicine
