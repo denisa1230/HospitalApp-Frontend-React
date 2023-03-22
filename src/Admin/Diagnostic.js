@@ -1,13 +1,13 @@
 import React from "react"
 import axios from "axios"
 import AdminNavBar from "../navBars/AdminNavBar"
-import UpdateHospital from "./UpdateHospital"
+import UpdateDiagnostic from "./UpdateDiagnostic"
 import ReactTable from "react-table-6"
 import "react-table-6/react-table.css"
 import {Button, Col, Container, Row} from "reactstrap"
 import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
-import BackgroundImg from '../Images/AddHospital.jpg';
+import BackgroundImg from '../Images/diagnostic1.jpg';
 
 const textStyle = {color: 'black',  fontWeight: 'bold' };
 const backgroundStyle = {
@@ -19,92 +19,88 @@ const backgroundStyle = {
     backgroundImage: `url(${BackgroundImg})`
 };
 
-
-class Hospital extends React.Component{
+class Diagnostic extends React.Component{
     constructor(){
         super()
         this.state={
             update:"false",
-            hospitals:[],
+            diagnostic:[],
             selected:0
         }
-
-        this.handleDelete=this.handleDelete.bind(this)
-        this.handleSubmit=this.handleSubmit.bind(this)
         this.handleUpdate=this.handleUpdate.bind(this)
+        this.handleDelete=this.handleDelete.bind(this)
+        this.getDiagnostic=this.getDiagnostic.bind(this)
+        this.handleSubmit=this.handleSubmit.bind(this)
     }
 
     componentDidMount(){
-        this.getHospital()
+        this.getDiagnostic()
     }
 
 
-    getHospital(){
-        axios.get("http://localhost:8080/hospital/findAllHospital").then(response=>{
-            console.log(response.data)
+    getDiagnostic(){
+       axios.get("http://localhost:8080/diagnostic/findAllDiagnosis").then(response=>{
+            var allDiagnostic=response.data
+            var pendingDiagnostics=[]
+            for(var i=0;i<allDiagnostic.length;i++){
+                if(allDiagnostic[i].status==="AVAILABLE") 
+                pendingDiagnostics.push(allDiagnostic[i])
+            }
             this.setState({
-                hospitals:response.data
+                diagnostic:pendingDiagnostics
             })
+        })
+       
+           
+    }
+   
+
+
+    handleDelete(){
+        axios.get(`http://localhost:8080/diagnostic/deleteDiagnostic/${this.state.diagnostic[this.state.selected].idDiagnostic}`).then(response=>{
+            this.getDiagnostic()
         })
     }
 
-
     handleUpdate(){
-      this.setState({
-        update:"true"
-      })
+       this.setState({
+           update:"true"
+       })
     }
 
-    handleDelete(){
-      axios.get(`http://localhost:8080/hospital/deleteHospital/${this.state.hospitals[this.state.selected].idHospital}`).then(response=>{
-        this.getHospital()
-    })
-    }
+    handleSubmit(value){
+            axios.post("http://localhost:8080/diagnostic/updateDiagnostic",value).then(response=>{
+                this.getDiagnostic()
+                this.setState({
+                    update:"false"
+                })
+            })
 
-    handleSubmit(hospital){
-      
-        axios.post("http://localhost:8080/hospital/updateHospital",hospital
-         ).then(response=>{
-          this.getHospital()
-          this.setState({
-            update:"false"
-          })
-      })
     }
-    
+   
+  
+
     render(){
         return(
             <div>
-                <AdminNavBar
+                 <AdminNavBar
                 notificationPage="false"/> <Container fluid style={backgroundStyle}>
-                    <div className="c"><h1 className=  "display-3" style={textStyle}  ><center> Update/Delete Hospital</center></h1></div>
+                <div className="c"><h1 className=  "display-3" style={textStyle}><center> Update/Delete Diagnostic</center></h1></div>
                 {this.state.update==="false" ?
-                <div><br></br><br></br>
+                <div><br/><br/><br></br>
                     <Row><Col ssm="6" md={{ size: 8, offset: 3 }}><Card><CardBody>
                <ReactTable
                defaultPageSize={10}
-               data={this.state.hospitals}
+               data={this.state.diagnostic}
                columns={[
                    {
                        Header:"Name",
                        accessor:"name"
                    },
                    {
-                       Header:"Address",
-                       accessor:"address"
-                   },
-                   {
-                       Header:"Locality",
-                       accessor:"locality"
-                   },
-                   {
-                    Header:"County",
-                    accessor:"county"
-                  },
-                  {
-                    Header:"Country",
-                    accessor:"country"
-                  }
+                       Header:"Details",
+                       accessor:"details"
+                   }
 
                ]}
                getTrProps={(state, rowInfo) => {
@@ -130,14 +126,14 @@ class Hospital extends React.Component{
                     </CardBody></Card></Col></Row><br/><br/>
             </div>
                     :
-            <UpdateHospital
-            title="Update Hospital"
+            <UpdateDiagnostic
+            title="Update Diagnostic"
             buttonName="Update"
-            hospital={this.state.hospitals[this.state.selected]}
+            diagnostic={this.state.diagnostic[this.state.selected]}
             handleSubmit={this.handleSubmit}/>}
-                </Container> </div>
+            </Container>   </div>
         )
     }
 }
 
-export default Hospital
+export default Diagnostic

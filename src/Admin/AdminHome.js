@@ -1,8 +1,6 @@
 import React from 'react';
 import AdminNavBar from "../navBars/AdminNavBar"
-
-
-import BackgroundImg from "../Admin/admin.png";
+import BackgroundImg from "../Images/admin.png";
 import {Container, Media} from "reactstrap";
 
 

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import { FaUser,FaLock } from "react-icons/fa";
 import axios from "axios"
 import NotLoggedNavBar from "../navBars/NotLoggedNavBar.js";
-import BackgroundImg from '../login/firstPage.png';
+import BackgroundImg from '../Images/firstPage.png';
 import Jumbotron from "react-bootstrap/Jumbotron";
 
 const backgroundStyle = {

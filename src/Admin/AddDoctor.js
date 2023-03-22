@@ -1,20 +1,18 @@
 import React from "react"
 import {Form, FormGroup, Input, Label, Button, InputGroup, Col, Row, Media, Container} from "reactstrap"
-import {Link} from "react-router-dom"
-import { FaUser,FaLock } from "react-icons/fa";
 import axios from "axios"
 import isEmail from 'validator/lib/isEmail';
 import AdminNavBar from "../navBars/AdminNavBar"
-import BackgroundImg from "../Admin/doctor.jpg";
+import BackgroundImg from "../Images/doctor.jpg";
 import Swal from 'sweetalert2';
 
 
 class AddDoctor extends React.Component{
 
+
     constructor(props){
         super(props)
         this.state={
-            email:"",
             password1:"",
             password2:"",
             firstname:"",
@@ -22,6 +20,9 @@ class AddDoctor extends React.Component{
             email:"",
             specialization:"",
             section:"",
+            phone:"",
+            description:"",
+            program:"",
             emailExist:"false",
             emailNotMail:"false",
             passwordError:"true",
@@ -73,7 +74,10 @@ class AddDoctor extends React.Component{
                             lastName:this.state.lastname,
                             email:this.state.email,
                             specialization:this.state.specialization,
-                            section:this.state.selectedSection
+                            section:this.state.selectedSection,
+                            phone:this.state.phone,
+                            description:this.state.description,
+                            program:this.state.program
                         }
                     }).then(response=>{
                        Swal.fire('Doctor added')
@@ -256,6 +260,22 @@ class AddDoctor extends React.Component{
                     </FormGroup>
                     </Col>
                     </Row>
+                    <FormGroup>
+                            <Label className="login-label">Phone Number</Label>
+                        <Input className="input" type="text" name="phone"
+                        onChange={this.handleChange}
+                        value={this.state.phone}
+                        placeholder="Phone Number"
+                        />  
+                        </FormGroup>
+                        <FormGroup>
+                        <Label className="login-label">Program Available</Label>
+                        <Input className="input" type="text" name="program"
+                        onChange={this.handleChange}
+                        value={this.state.program}
+                        placeholder="Program Available"
+                        />  
+                        </FormGroup>
                             <FormGroup>
                             <Label className="login-label">Specialization</Label>
                         <Input className="input" type="text" name="specialization"
@@ -288,6 +308,14 @@ class AddDoctor extends React.Component{
                                     <option>{section.name}</option>)}
                                 </Input>
                             </FormGroup>
+                            <FormGroup>
+                        <Label className="login-label">Description</Label>
+                        <Input className="input" type="text" name="description"
+                        onChange={this.handleChange}
+                        value={this.state.description}
+                        placeholder="Description"
+                        />  
+                        </FormGroup>
                            
 
                     <Button className="btn-lg btn-dark btn-block"

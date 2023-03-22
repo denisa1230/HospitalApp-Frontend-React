@@ -24,7 +24,7 @@ class AdminNavBar extends React.Component{
     }
 
     handleCheckBackend(){
-        axios.get("http://localhost:8080/medicine/getMedicines").then(response=>{
+        axios.get("http://localhost:8080/drug/getDrug").then(response=>{
             console.log(response.data)
             var allMedicines=response.data
             var nr=0
@@ -55,12 +55,16 @@ class AdminNavBar extends React.Component{
                     <NavDropdown.Item href="/Sections">Update/Delete</NavDropdown.Item>
                     <NavDropdown.Item href="/AddSection">Add Section</NavDropdown.Item>
                 </NavDropdown>
+                <NavDropdown title="Diagnostic">
+                    <NavDropdown.Item href="/Diagnostic">Update/Delete</NavDropdown.Item>
+                    <NavDropdown.Item href="/AddDiagnostic">Add Diagnostic</NavDropdown.Item>
+                </NavDropdown>
                 <Nav.Link href="/AddDoctor">Add Doctor</Nav.Link>
                 {(this.state.showNotification==="true" && this.state.numberOfNotifications!==0) ?
                 <Nav.Link href="/ApproveMedicine">Approve Medicine<button className="buttonNotification">{this.state.numberOfNotifications}</button></Nav.Link>:
                 <Nav.Link href="/ApproveMedicine">Approve Medicine</Nav.Link>
                 }
-				 
+				 <Nav.Link href="/ApproveDiagnostic">ApproveDiagnostic</Nav.Link>
                 </Nav>
                     <Nav className="justify-content-end">
                         <Nav.Link href="/Reset">Reset Password</Nav.Link>

@@ -2,10 +2,17 @@ import React from 'react';
 import AdminNavBar from "../navBars/AdminNavBar"
 import UpdateSection from "./UpdateSection"
 import axios from "axios"
-import BackgroundImg from '../Admin/section.jpg';
 import Jumbotron from "react-bootstrap/Jumbotron";
-import Hospital from './Hospital';
+import BackgroundImg from '../Images/section.jpg';
 
+const backgroundStyle = {
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    width: "100%",
+    height: "100%",
+    backgroundImage: `url(${BackgroundImg})`
+};
 
 
 class AddSection extends React.Component{
@@ -59,8 +66,8 @@ class AddSection extends React.Component{
             <div>
                  <AdminNavBar
                 notificationPage="false"/>
-                <div className='jumbotron' >
-                <Jumbotron  >
+                <div>
+                <Jumbotron >
                 <UpdateSection
                 title="Create Section"
                 buttonName="Submit"

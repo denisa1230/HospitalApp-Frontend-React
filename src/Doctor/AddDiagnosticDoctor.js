@@ -1,9 +1,9 @@
 import React from 'react';
 import DoctorNavBar from "../navBars/DoctorNavBar"
-import ViewMedicineDoctor from "./ViewMedicineDoctor"
+import ViewDiagnosticDoctor from "./ViewDiagnosticDoctor"
 import axios from "axios"
 import Swal from 'sweetalert2';
-import BackgroundImg from '../Images/pictures.jpg';
+import BackgroundImg from '../Images/viruss.png';
 import Jumbotron from "react-bootstrap/Jumbotron";
 
 
@@ -17,25 +17,25 @@ const backgroundStyle = {
 };
 
 
-class MedicineHome extends React.Component{
+class DiagnosticHome extends React.Component{
     constructor(){
         super();
         this.state={
-            medicine:{
-                drugName:"",
-                dosage:""
+           diagnostic:{
+                name:"",
+                details:""
             }
         };
         this.handleSubmit=this.handleSubmit.bind(this)
     }
 
     handleSubmit(value){
-            axios.post("http://localhost:8080/drug/saveDrug",{
-                drugName:value.drugName,
-                dosage:value.dosage,
+            axios.post("http://localhost:8080/diagnostic/saveDiagnostic",{
+                name:value.name,
+                details:value.details,
                 status:"PENDING"
             })
-            Swal.fire('Medicine added')
+            Swal.fire('Diagnostic added')
     }
 
     render(){
@@ -43,10 +43,10 @@ class MedicineHome extends React.Component{
             <div>
                 <DoctorNavBar/>
                 <Jumbotron fluid style={backgroundStyle}>
-                <ViewMedicineDoctor
-                title="Create medicine"
+                <ViewDiagnosticDoctor
+                title="Create Diagnostic"
                 buttonName="Submit"
-                medication={this.state.medicine}
+                diagnostic={this.state.diagnostic}
                 handleSubmit={this.handleSubmit}/>
                 </Jumbotron>
             </div>
@@ -54,4 +54,4 @@ class MedicineHome extends React.Component{
     }
 }
 
-export default MedicineHome
+export default DiagnosticHome

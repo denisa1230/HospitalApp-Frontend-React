@@ -6,7 +6,7 @@ import "react-table-6/react-table.css"
 import {Button, Col, Container, Row} from "reactstrap"
 import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
-import BackgroundImg from '../Images/medicine.jpg';
+import BackgroundImg from '../Images/virus.png';
 
 const textStyle = {color: 'black',  fontWeight: 'bold' };
 const backgroundStyle = {
@@ -18,47 +18,46 @@ const backgroundStyle = {
     backgroundImage: `url(${BackgroundImg})`
 };
 
-class ApproveMedicine extends React.Component{
+class ApproveDiagnostic extends React.Component{
     constructor(){
         super()
         this.state={
             update:"false",
-            medicationToBeUpdated:{},
-            medications:[],
+            diagnosticToBeUpdated:{},
+            diagnostic:[],
             selected:0
         }
         this.handleApprove=this.handleApprove.bind(this)
-        this.getMedicines=this.getMedicines.bind(this)
+        this.getDiagnostic=this.getDiagnostic.bind(this)
     }
 
     componentDidMount(){
-        this.getMedicines()
+        this.getDiagnostic()
     }
 
 
-    getMedicines(){
-        axios.get("http://localhost:8080/drug/findAllDrug").then(response=>{
+    getDiagnostic(){
+        axios.get("http://localhost:8080/diagnostic/findAllDiagnosis").then(response=>{
             console.log(response.data)
-            var allMedicines=response.data
-            var pendingMedicines=[]
-            for(var i=0;i<allMedicines.length;i++){
-                if(allMedicines[i].status==="PENDING") pendingMedicines.push(allMedicines[i])
+            var allDiagnosis=response.data
+            var pendingDiagnostic=[]
+            for(var i=0;i<allDiagnosis.length;i++){
+                if(allDiagnosis[i].status==="PENDING") pendingDiagnostic.push(allDiagnosis[i])
             }
             this.setState({
-                medications:pendingMedicines
+                diagnostic:pendingDiagnostic
             })
         })
     }
 
     handleApprove(status){
-      var approvedMedicine=this.state.medications[this.state.selected]
-      axios.post("http://localhost:8080/drug/updateDrug",{
-        idDrug:approvedMedicine.idDrug,
-        drugName:approvedMedicine.drugName,
-        dosage:approvedMedicine.dosage,
+      var approvedDiagnostic=this.state.diagnostic[this.state.selected]
+      axios.post("http://localhost:8080/diagnostic/updateDiagnostic",{
+        idDiagnostic:approvedDiagnostic.idDiagnostic,
+        name:approvedDiagnostic.name,
         status:status
       }).then(response=>{
-        this.getMedicines()
+        this.getDiagnostic()
     })
 
     }
@@ -69,16 +68,16 @@ class ApproveMedicine extends React.Component{
                 <AdminNavBar
                 notificationPage="true"/>
                 <Container fluid style={backgroundStyle}>
-                    <div className="c"><h1 className=  "display-3" style={textStyle}><center> Approve Medicine</center></h1></div>
+                    <div className="c"><h1 className=  "display-3" style={textStyle}><center> Approve Diagnostic</center></h1></div>
                 <div><br/><br/>
                     <Row><Col ssm="6" md={{ size: 8, offset: 3 }}><Card><CardBody>
                <ReactTable
                defaultPageSize={10}
-               data={this.state.medications}
+               data={this.state.diagnostic}
                columns={[
                    {
                        Header:"Name",
-                       accessor:"drugName"
+                       accessor:"name"
                    }
                ]}
                getTrProps={(state, rowInfo) => {
@@ -109,4 +108,4 @@ class ApproveMedicine extends React.Component{
     }
 }
 
-export default ApproveMedicine
+export default ApproveDiagnostic

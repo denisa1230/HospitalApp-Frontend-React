@@ -7,7 +7,7 @@ function NotLoggedNavBar(){
               <Nav className="mr-auto">
                  <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/Login">LogIn</Nav.Link>
-                  <Nav.Link href="/SearchMedicine">Search Medicine</Nav.Link>
+                 
 
 
               </Nav>

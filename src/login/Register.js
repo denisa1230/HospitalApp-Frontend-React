@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import { FaUser,FaLock } from "react-icons/fa";
 import axios from "axios"
 import isEmail from 'validator/lib/isEmail';
-import BackgroundImg from "./firstPage.png";
+import BackgroundImg from "../Images/firstPage.png";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import NotLoggedNavBar from "../navBars/NotLoggedNavBar";
 
@@ -25,10 +25,13 @@ class Register extends React.Component{
             username:"",
             password1:"",
             password2:"",
-            firstname:"",
-            secondname:"",
+            firstName:"",
+            lastName:"",
+            phone:"",
+            gender:"",
             address:"",
             email:"",
+            birth:"",
             usernameExist:"false",
             usernameNotMail:"false",
             passwordError:"true",
@@ -64,9 +67,13 @@ class Register extends React.Component{
                         email:this.state.username,
                         password:this.state.password1,
                         patient: {
-                            firstName:this.state.firstname,
-                            lastName:this.state.secondname,
-                            address:this.state.address
+                            firstName:this.state.firstName,
+                            lastName:this.state.lastName,
+                            address:this.state.address,
+                            email:this.state.username,
+                            phone:this.state.phone,
+                            gender:this.state.gender,
+                            birth:this.state.birth
                         }
                     }).then(response=>{
                             this.props.history.push("/")
@@ -141,18 +148,18 @@ class Register extends React.Component{
                     <FormGroup>
                         <Label className="login-label">First Name</Label>
                         <Input className="input" type="text"
-                        name="firstname"
+                        name="firstName"
                         onChange={this.handleChange}
-                        value={this.state.firstname}
+                        value={this.state.firstName}
                         placeholder="First name"
                         />
                     </FormGroup>
                     <FormGroup>
                         <Label className="login-label">Second Name</Label>
                         <Input className="input" type="text"
-                        name="secondname"
+                        name="lastName"
                         onChange={this.handleChange}
-                        value={this.state.secondname}
+                        value={this.state.lastName}
                         placeholder="Second name"
                         />
                     </FormGroup>
@@ -163,6 +170,33 @@ class Register extends React.Component{
                         onChange={this.handleChange}
                         value={this.state.address}
                         placeholder="Address"
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label className="login-label">Phone</Label>
+                        <Input className="input" type="text"
+                        name="phone"
+                        onChange={this.handleChange}
+                        value={this.state.phone}
+                        placeholder="Phone"
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label className="login-label">Gender</Label>
+                        <Input className="input" type="text"
+                        name="gender"
+                        onChange={this.handleChange}
+                        value={this.state.gender}
+                        placeholder="Gender"
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label className="login-label">Birth</Label>
+                        <Input className="input" type="text"
+                        name="birth"
+                        onChange={this.handleChange}
+                        value={this.state.birth}
+                        placeholder="Birth"
                         />
                     </FormGroup>
                     <Button className="btn-lg btn-dark btn-block"

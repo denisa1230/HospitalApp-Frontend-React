@@ -112,11 +112,18 @@ div.b {
 
 .jumbotron{
   
-    background: url('./Admin/drug.jpg') no-repeat center center fixed;
+    background: url('./Images/drug.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
  
 }
+.cardW{
+  width: 30%;
+  margin: auto;
+  margin-top:7%;
+}
+
+
 

@@ -1,34 +1,35 @@
 import React from 'react';
 import AdminNavBar from "../navBars/AdminNavBar"
-import UpdateMedication from "./UpdateMedication"
+import UpdateDiagnostic from "./UpdateDiagnostic"
 import axios from "axios"
 import Swal from 'sweetalert2';
 import Jumbotron from "react-bootstrap/Jumbotron";
 
 
 
-class MedicineHome extends React.Component{
+class AddDiagnostic extends React.Component{
     constructor(){
         super()
         this.state={
-            medicine:{
-                drugName:"",
-                dosage:"" 
+            diagnostic:{
+                name:"",
+                details:""   
             }
         }
         this.handleSubmit=this.handleSubmit.bind(this)
     }
 
     handleSubmit(value){
-        console.log()
+        console.log(value)
         
-            axios.post("http://localhost:8080/drug/saveDrug",{
-                drugName:value.drugName,
-                dosage:value.dosage,
+            axios.post("http://localhost:8080/diagnostic/saveDiagnostic",{
+                idDiagnostic:value.id,
+                name:value.name,
+                details:value.details,
                 status:"AVAILABLE"
             }).then(response=>{
-                this.props.history.push("/Medicines")
-                Swal.fire('Medicine added')
+                this.props.history.push("/Diagnostic")
+                Swal.fire('Diagnostic added')
             })
                  
             
@@ -40,12 +41,12 @@ class MedicineHome extends React.Component{
             <div>
                  <AdminNavBar
                 notificationPage="false"/>
-                <div className="jumbotron" >
+                <div >
                 <Jumbotron >
-                <UpdateMedication
-                title="Create medicine"
+                <UpdateDiagnostic
+                title="Create Diagnostic"
                 buttonName="Submit"
-                medication={this.state.medicine}
+                diagnostic={this.state.diagnostic}
                 handleSubmit={this.handleSubmit}/>
                 </Jumbotron>
                 </div>
@@ -54,4 +55,4 @@ class MedicineHome extends React.Component{
     }
 }
 
-export default MedicineHome
+export default AddDiagnostic

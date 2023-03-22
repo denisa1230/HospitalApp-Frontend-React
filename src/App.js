@@ -19,7 +19,15 @@ import ApproveMedicine from './Admin/ApproveMedicine';
 import AddMedicineDoctor from './Doctor/AddMedicineDoctor';
 import ViewMedicineDoctor from './Doctor/ViewMedicineDoctor';
 import DoctorHome from './Doctor/DoctorHome';
-
+import AddDiagnostic from './Admin/AddDiagnostic';
+import UpdateDiagnostic from './Admin/UpdateDiagnostic';
+import Diagnostic from './Admin/Diagnostic';
+import ApproveDiagnostic from './Admin/AproveDiagnostic';
+import AddDiagnosticDoctor from './Doctor/AddDiagnosticDoctor';
+import ViewDiagnosticDoctor from './Doctor/ViewDiagnosticDoctor';
+import UpdateDoctorProfile from './Doctor/UpdateDoctorProfile';
+import PatientHome from './Patient/PatientHome';
+import UpdatePatientProfile from './Patient/UpdatePatientProfile';
 
 function App() {
   return (
@@ -43,6 +51,15 @@ function App() {
                         <Route exact path="/AddMedicineDoctor" component={AddMedicineDoctor}/>
                         <Route exact path="/ViewMedicineDoctor" component={ViewMedicineDoctor}/>
                         <Route exact path="/DoctorHome" component={DoctorHome}/>
+                        <Route exact path="/AddDiagnostic" component={AddDiagnostic}/>
+                        <Route exact path="/UpdateDiagnostic" component={UpdateDiagnostic}/>
+                        <Route exact path="/Diagnostic" component={Diagnostic}/>
+                        <Route exact path="/ApproveDiagnostic" component={ApproveDiagnostic}/>
+                        <Route exact path="/AddDiagnosticDoctor" component={AddDiagnosticDoctor}/>
+                        <Route exact path="/ViewDiagnosticDoctor" component={ViewDiagnosticDoctor}/>
+                        <Route exact path="/UpdateDoctorProfile" component={UpdateDoctorProfile}/>
+                        <Route exact path="/UpdatePatientProfile" component={UpdatePatientProfile}/>
+                        <Route exact path="/PatientHome" component={PatientHome}/>
                     </BrowserRouter>
                     </div>
   );
