@@ -9,6 +9,8 @@ function DoctorNavBar(){
                 <Nav.Link href="/DoctorHome">Home</Nav.Link>
                 <Nav.Link href="/AddMedicineDoctor">AddMedicine</Nav.Link>
                 <Nav.Link href="/AddDiagnosticDoctor">AddDiagnosticDoctor</Nav.Link>
+                <Nav.Link href="/AproveAppoiment">AproveAppoiment</Nav.Link>
+                <Nav.Link href="/SeePatients">See your Patients</Nav.Link>
                 </Nav>
                     <Nav className="justify-content-end">
                         <Nav.Link href="/Reset">Reset Password</Nav.Link>

@@ -28,6 +28,13 @@ import ViewDiagnosticDoctor from './Doctor/ViewDiagnosticDoctor';
 import UpdateDoctorProfile from './Doctor/UpdateDoctorProfile';
 import PatientHome from './Patient/PatientHome';
 import UpdatePatientProfile from './Patient/UpdatePatientProfile';
+import ShowDoctor from './Patient/ShowDoctor';
+import DoctorProfile from './Patient/DoctorProfile';
+import Calendar from "./Patient/Calendar";
+import MakeAppoiments from "./Patient/MakeAppoiments";
+import ViewAppoiments from './Patient/ViewAppoiments';
+import AproveAppoiment from './Doctor/AproveAppoiment';
+import SeePatients from './Doctor/SeePatients';
 
 function App() {
   return (
@@ -60,6 +67,13 @@ function App() {
                         <Route exact path="/UpdateDoctorProfile" component={UpdateDoctorProfile}/>
                         <Route exact path="/UpdatePatientProfile" component={UpdatePatientProfile}/>
                         <Route exact path="/PatientHome" component={PatientHome}/>
+                        <Route exact path="/ShowDoctor" component={ShowDoctor}/>
+                        <Route exact path="/DoctorProfile" component={DoctorProfile}/>
+                        <Route exact path="/MakeAppoiments" component={MakeAppoiments}/>
+                        <Route exact path="/Calendar" component={Calendar}/>
+                        <Route exact path="/ViewAppoiments" component={ViewAppoiments}/>
+                        <Route exact path="/AproveAppoiment" component={AproveAppoiment}/>
+                        <Route exact path="/SeePatients" component={SeePatients}/>
                     </BrowserRouter>
                     </div>
   );

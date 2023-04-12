@@ -58,14 +58,15 @@ class LogIn extends React.Component{
                     this.setState({
                         wrongPassword:"false",
                     })
-                    localStorage.setItem("username",this.state.username)
+                    localStorage.setItem("username", this.state.username)
+                   
                     response.data.type==="admin" ? this.props.history.push("/AdminHome"):
-                     response.data.type==="pacient" ? this.props.history.push("/PatientHome"):
-                     this.props.history.push("/DoctorHome")
+                    response.data.type==="pacient" ? this.props.history.push("/PatientHome"):
+                    this.props.history.push("/DoctorHome")
                 }
 
 
-                
+                console.log("Pacientul autentificat:", this.state.user);
 
             });
     }

@@ -7,6 +7,11 @@ function DoctorNavBar(){
         <Navbar expend="lg" bg="dark" variant="dark">
             <Nav className="mr-auto">
                 <Nav.Link href="/PatientHome">Home</Nav.Link>
+                <Nav.Link href="/ShowDoctor">ShowDoctor</Nav.Link>
+                <NavDropdown title="Appoiments">
+                    <NavDropdown.Item href="/MakeAppoiments">MakeAppoiments</NavDropdown.Item>
+                    <NavDropdown.Item href="/ViewAppoiments">ViewAppoiments</NavDropdown.Item>
+                </NavDropdown>
                 </Nav>
                     <Nav className="justify-content-end">
                         <Nav.Link href="/Reset">Reset Password</Nav.Link>
