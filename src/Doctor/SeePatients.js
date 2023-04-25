@@ -51,7 +51,6 @@ getDoctorByAccount() {
         },()=>{
           this.getAppoimentByDoctor()
         });
-        console.log(this.state.idDoctor);
       });
   }
 
@@ -68,7 +67,7 @@ getDoctorByAccount() {
         this.setState({
             appoiments:pendingAppoiments
         })
-        console.log(this.state.appoiments)
+
     })
 }
 
@@ -90,10 +89,12 @@ getDoctorByAccount() {
   })
 }
 handleClickConsultation(index) {
-  const selectedAppoiment = this.state.appoiments[index];
-  localStorage.setItem("selectedAppoiment",JSON.stringify(selectedAppoiment));
-  this.props.history.push(`/MakeRecipie`);
+  const selectedAppointment = this.state.appoiments[index].idAppointment;
+  localStorage.setItem("selectedAppointment", selectedAppointment);
+  console.log(selectedAppointment)
+  this.props.history.push(`/MakeConsultation`);
 }
+
     render(){
 
         return(

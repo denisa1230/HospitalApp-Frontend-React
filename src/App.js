@@ -35,6 +35,8 @@ import MakeAppoiments from "./Patient/MakeAppoiments";
 import ViewAppoiments from './Patient/ViewAppoiments';
 import AproveAppoiment from './Doctor/AproveAppoiment';
 import SeePatients from './Doctor/SeePatients';
+import MakeConsultation from './Doctor/MakeConsultation';
+import ViewConsultation from './Patient/ViewConsultation';
 
 function App() {
   return (
@@ -74,6 +76,8 @@ function App() {
                         <Route exact path="/ViewAppoiments" component={ViewAppoiments}/>
                         <Route exact path="/AproveAppoiment" component={AproveAppoiment}/>
                         <Route exact path="/SeePatients" component={SeePatients}/>
+                        <Route exact path="/MakeConsultation" component={MakeConsultation}/>
+                        <Route exact path="/ViewConsultation" component={ViewConsultation}/>
                     </BrowserRouter>
                     </div>
   );

@@ -8,6 +8,7 @@ function DoctorNavBar(){
             <Nav className="mr-auto">
                 <Nav.Link href="/PatientHome">Home</Nav.Link>
                 <Nav.Link href="/ShowDoctor">ShowDoctor</Nav.Link>
+                <Nav.Link href="/ViewConsultation">ViewConsultation</Nav.Link>
                 <NavDropdown title="Appoiments">
                     <NavDropdown.Item href="/MakeAppoiments">MakeAppoiments</NavDropdown.Item>
                     <NavDropdown.Item href="/ViewAppoiments">ViewAppoiments</NavDropdown.Item>

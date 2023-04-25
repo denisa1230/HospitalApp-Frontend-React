@@ -4,7 +4,7 @@ import {Button, Form, FormGroup, Jumbotron, Table,Input,Label} from "reactstrap"
 import 'react-calendar/dist/Calendar.css';
 import Calendar from "react-calendar";
 import axios from "axios";
-import { withRouter } from 'react-router-dom';
+
 const backgroundStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -126,7 +126,7 @@ class MakeAppoiments extends React.Component {
       this.setState({ oraSelectata }, () => {
         console.log(this.state.oraSelectata);
       });
-      console.log(this.props.location.state.appointment)
+      
     }
 
     handleSelectHourByAppoiment() {
@@ -286,4 +286,4 @@ class MakeAppoiments extends React.Component {
 
 }
 
-export default withRouter(MakeAppoiments);
+export default MakeAppoiments;

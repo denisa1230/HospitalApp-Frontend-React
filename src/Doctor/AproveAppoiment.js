@@ -68,7 +68,7 @@ class AproveAppoiment extends React.Component{
     handleApprove(status){
       var approvedAppoiments=this.state.appoiments[this.state.selected]
       axios.post("http://localhost:8080/appointments/updateAppointment",{
-        idAppoiment:approvedAppoiments.idAppoiment,
+        idAppointment:approvedAppoiments.idAppointment,
         date:approvedAppoiments.date,
         hour:approvedAppoiments.hour,
         status:status
