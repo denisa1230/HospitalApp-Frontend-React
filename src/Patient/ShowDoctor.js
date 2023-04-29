@@ -3,7 +3,7 @@ import { Card, CardBody, Jumbotron, ListGroup, ListGroupItem } from "reactstrap"
 import axios from "axios";
 import { FaEdit } from "react-icons/all";
 import PatientNavBar from "../navBars/PatientNavBar";
-import image1 from "../Images/showDoctor.jpg";
+import image1 from "../Images/hospital.jpg";
 import { Button, Col, Container, Row } from "reactstrap";
 import ReactTable from "react-table-6";
 import { withRouter } from "react-router-dom";
@@ -20,7 +20,7 @@ const backgroundStyle = {
   marginBottom: "0px",
   backgroundImage: `url(${image1})`,
 };
-const textStyle = { color: "black", fontWeight: "bold" };
+const textStyle = { color: "#343434", fontWeight: "bold" };
 class ShowDoctor extends React.Component {
   constructor(props) {
     super(props);
@@ -61,11 +61,10 @@ class ShowDoctor extends React.Component {
     <Container fluid style={backgroundStyle}>
       <div className="c">
         <h1 className="display-3" style={textStyle}>
-          <center> Make an Appointement</center>
+          <center> See Doctors</center>
         </h1>
       </div>
       <div>
-        <br></br>
         <br></br>
         <Row>
           <Col ssm="6" md={{ size: 8, offset: 3 }}>
@@ -133,7 +132,7 @@ class ShowDoctor extends React.Component {
                     }
                   }}
                 />
-                <br />
+               
                 {this.state.selected >= 0 && (
                   <div className="container">
                   <button className="button-33" onClick={() => this.handleProfileClick(this.state.selected)} disabled={this.state.selected === -1}> View Profile</button>
@@ -143,8 +142,6 @@ class ShowDoctor extends React.Component {
             </Card>
           </Col>
         </Row>
-        <br />
-        <br />
       </div>
     </Container>
   </div>

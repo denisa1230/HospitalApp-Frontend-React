@@ -4,8 +4,10 @@ import {Link} from "react-router-dom"
 import { FaUser,FaLock } from "react-icons/fa";
 import axios from "axios"
 import NotLoggedNavBar from "../navBars/NotLoggedNavBar.js";
-import BackgroundImg from '../Images/firstPage.png';
+import BackgroundImg from '../Images/doctor_2.gif';
+import BackgroundImg1 from '../Images/a.png';
 import Jumbotron from "react-bootstrap/Jumbotron";
+
 
 const backgroundStyle = {
     backgroundPosition: 'center',
@@ -16,11 +18,21 @@ const backgroundStyle = {
     backgroundImage: `url(${BackgroundImg})`
    
 };
+const backgroundStylee = {
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    width: "100%",
+    height: "40%",
+    backgroundImage: `url(${BackgroundImg1})`
+   
+};
 
 const textStyle = {color: '#48d1cc',  fontWeight: 'bold' };
 const backgroundColor={
     background:"none"
 }
+
 
 class LogIn extends React.Component{
 
@@ -36,7 +48,8 @@ class LogIn extends React.Component{
         this.handleClick=this.handleClick.bind(this)
 
     }
-
+ 
+   
 
     handleClick(password){
 
@@ -80,15 +93,23 @@ class LogIn extends React.Component{
     }
     render(){
         return(
-            <div className="body">
+            <div className="appAside">
                 <NotLoggedNavBar/>
-                <Jumbotron fluid style={backgroundStyle}>
-                <Form className="login-form">
-                        <span>
-                                  <h3>Login</h3>
-                        </span>
-
                 
+                <div className="logo-container">
+                    <img className="imgg" src={require("../Images/a.png")} alt="Logo"/>
+                    <div className="login-header">
+                        <p >Online Healthcare</p>
+                        <p className="fancy">Consultation Services</p>
+                    </div>
+                </div>
+               
+               
+                <Form className="login-form1" style={backgroundStyle}>
+                        <span> <center> <h2>Login Here</h2></center></span>
+                        <br/>
+                        <br/>
+                        <br/>
                     <FormGroup>
                         <FaUser/>
                         {this.state.wrongUsername==="false" ?
@@ -120,7 +141,7 @@ class LogIn extends React.Component{
                     </FormGroup>
                     <FormGroup>
                 </FormGroup>
-                    <Button className="btn-lg btn-dark btn-block"
+                    <Button className="btn-lg btbutton__boxn-dark btn-block"
                     onClick={this.handleClick}>Log In</Button>
                 <FormGroup>
                     <Label className="login-label">Don't have an account yet?
@@ -129,8 +150,14 @@ class LogIn extends React.Component{
                     </Label>
                 </FormGroup>
                 </Form>
-                </Jumbotron>
-            </div>
+               
+                <div id="singInButton">
+                </div>
+               
+               
+               </div>
+                
+            
         )
     }
 }

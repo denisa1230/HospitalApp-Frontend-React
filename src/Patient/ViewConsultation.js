@@ -1,10 +1,11 @@
 import React from "react";
-import { Card, CardBody, Row, Col,Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
+import { Card, CardBody, Row, Col,Modal,Container, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import axios from "axios";
 import { FaEdit } from "react-icons/all";
 import PatientNavBar from "../navBars/PatientNavBar";
 import ReactTable from "react-table-6";
-import image1 from "../Images/patient.jpg";
+import image1 from "../Images/section.jpg";
+
 
 const backgroundStyle = {
   backgroundPosition: "center",
@@ -101,12 +102,14 @@ class ViewConsultation extends React.Component {
     const { consultationMedicine, table } = this.state;
   
     return (
-      <div>
+      <div fluid style={backgroundStyle}>
         <PatientNavBar />
-        <br/><br/><br></br>
+        <Container fluid >
+          <div>
+        <br/>
         <Row>
           <Col ssm="6" md={{ size: 8, offset: 3 }}>
-            <Card>
+            <Card >
               <CardBody>
                 <ReactTable
                   defaultPageSize={10}
@@ -183,9 +186,8 @@ class ViewConsultation extends React.Component {
             </Card>
           </Col>
         </Row>
-        <br/><br/>
-  
-       
+        </div>
+        </Container>
   
       </div>
     );

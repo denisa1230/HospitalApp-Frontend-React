@@ -30,8 +30,13 @@ class UpdateDiagnostic extends React.Component{
 
     render(){
         return(
-            <div className="jumbotron">
-                <Jumbotron></Jumbotron>
+            <div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                <Form className="login-form">
 
                      <h3>
@@ -63,7 +68,12 @@ class UpdateDiagnostic extends React.Component{
                     <Button className="btn-lg btn-block btn-succes" 
                     onClick={this.props.handleSubmit.bind(this.props,this.state.diagnostic)}>{this.state.buttonName}</Button>
                 </Form>
-
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </div>
         )
     }

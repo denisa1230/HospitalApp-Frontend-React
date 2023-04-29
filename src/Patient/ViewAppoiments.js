@@ -4,11 +4,11 @@ import axios from "axios"
 import { Button, Col, Container, Row } from "reactstrap";
 import ReactTable from "react-table-6";
 import { Card, CardBody, Jumbotron, ListGroup, ListGroupItem } from "reactstrap";
-import image1 from "../Images/doctor1.jpg";
+import image1 from "../Images/firstPage.png";
 import { withRouter } from "react-router-dom";
 import MakeAppoiments from "./MakeAppoiments";
 
-const textStyle = { color: "black", fontWeight: "bold" };
+const textStyle = { color: "#343434", fontWeight: "bold" };
 
 const backgroundStyle = {
   backgroundPosition: "center",
@@ -119,7 +119,7 @@ class ViewAppoiments extends React.Component {
               
               <div>
                 <br></br>
-                <br></br>
+                
                 <Row>
                   <Col ssm="6" md={{ size: 8, offset: 3 }}>
                     <Card>

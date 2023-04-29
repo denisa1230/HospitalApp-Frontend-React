@@ -34,16 +34,25 @@ class UpdateDoctorProfile extends React.Component{
                 ...prevState.doctor,
                 [name]:value
             }
+           
         }))
+        if (name === "phone") {
+            var isPhoneNumber = /^0\d{9}$/.test(value);
+            console.log(isPhoneNumber);
+            this.setState({
+                phoneNumberValid: isPhoneNumber
+            });
+        }
     }
 
 
     render(){
         return(
-            <Jumbotron style={backgroundStyle}>
-            <div>
-                
-                 <Form className="login-form">
+            
+              
+            <div className="login-form-doctor">
+                 <img className="imggg" src={require("../Images/doctor1.jpg")} alt="Logo"/>
+                 <Form >
                     <h3>
                         <span className="user-message">
                                  {this.state.title}
@@ -70,7 +79,10 @@ class UpdateDoctorProfile extends React.Component{
                         />
               </FormGroup>
               <FormGroup>
-                 <Label className="add-label">Phone</Label>
+              {!this.state.phoneNumberValid ?
+        <Label className="register-label">Not a valid phone number*</Label> :
+        <Label className="login-label">Phone</Label>
+    }
                         <Input className="input"
                         value={this.state.doctor.phone}
                         type="text"
@@ -99,13 +111,13 @@ class UpdateDoctorProfile extends React.Component{
                         placeholder="Program"
                         />
               </FormGroup>
-              <Button className="btn-lg btn-block btn-succes"
-                            onClick={this.props.handleSubmit.bind(this.props,this.state.doctor)}>{this.state.buttonName}</Button>
+              <center><Button className="btn-lg btn-block btn-succes"
+                            onClick={this.props.handleSubmit.bind(this.props,this.state.doctor)}>{this.state.buttonName}</Button></center>
                             
                 </Form>
-               
+              
             </div>
-            </Jumbotron>
+           
         )
     }
 }

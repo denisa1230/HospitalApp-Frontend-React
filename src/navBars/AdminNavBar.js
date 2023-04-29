@@ -29,7 +29,8 @@ class AdminNavBar extends React.Component{
             var allMedicines=response.data
             var nr=0
             for(var i=0;i<allMedicines.length;i++){
-                if(allMedicines[i].status==="PENDING") nr=nr+1
+                if(allMedicines[i].status==="PENDING")
+                 nr=nr+1
             }
             console.log(nr)
             this.setState({
@@ -41,6 +42,7 @@ class AdminNavBar extends React.Component{
     render(){
     return(
         <Navbar expend="lg" bg="dark" variant="dark">
+           <img src={require("../Images/icon.png")} alt="Logo" height="30" width="30" className="d-inline-block align-top" />
             <Nav className="mr-auto">
                 <Nav.Link href="/AdminHome">Home</Nav.Link>
                 <NavDropdown title="Medicine Operations">
@@ -65,11 +67,12 @@ class AdminNavBar extends React.Component{
                 <Nav.Link href="/ApproveMedicine">Approve Medicine</Nav.Link>
                 }
 				 <Nav.Link href="/ApproveDiagnostic">ApproveDiagnostic</Nav.Link>
+                 <Nav.Link href="/ViewChart">Statistic</Nav.Link>
                 </Nav>
                     <Nav className="justify-content-end">
-                        <Nav.Link href="/Reset">Reset Password</Nav.Link>
                         <Nav.Link href="/">Log Out</Nav.Link>
                 </Nav>
+               
         </Navbar>    
     )}
 }

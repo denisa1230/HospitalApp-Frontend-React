@@ -3,7 +3,7 @@ import {Card, CardBody, Jumbotron, ListGroup, ListGroupItem} from "reactstrap";
 import axios from "axios";
 import {FaEdit} from "react-icons/all";
 import DoctorNavBar from "../navBars/DoctorNavBar";
-import image1 from "../Images/doctor1.jpg";
+import image1 from "../Images/c.png";
 import UpdateDoctorProfile from "./UpdateDoctorProfile";
 
 const backgroundStyle = {
@@ -11,11 +11,13 @@ const backgroundStyle = {
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   width: "100%",
-  height:'100vh',
+  height:'100%',
   marginTop:'0px',
   marginBottom:'0px',
-  backgroundImage: `url(${image1})`
+  backgroundImage: `url(${image1})`,
+ 
 };
+
 class DoctorHome extends React.Component {
   constructor(props) {
     super(props);
@@ -81,9 +83,14 @@ class DoctorHome extends React.Component {
     return (
         <div className="body">
         <DoctorNavBar />
-        <Jumbotron fluid style={backgroundStyle}>
+        <div className="logo-container-home">
+                    <img className="imgg" src={require("../Images/pictures1.png")} alt="Logo"/>
+                    
+                
+          
         {this.state.update==="false" ?
-          <Card  className="cardW">
+          <Card  className="cardW-doctor">
+           <img className="imggg" src={require("../Images/doctor1.jpg")} alt="Logo"/>
           <span>
              <h3 align="center">Doctor profile</h3>
            </span>
@@ -95,13 +102,13 @@ class DoctorHome extends React.Component {
               </ListGroupItem>
               <ListGroupItem><b>Specialization:</b> {this.state.selectedDoctor.specialization}</ListGroupItem>
               <ListGroupItem><b>Email:</b> {this.state.selectedDoctor.email}</ListGroupItem>
-              <ListGroupItem><b>Phone:</b> {this.state.selectedDoctor.phone}
-              </ListGroupItem>
+              <ListGroupItem><b>Phone:</b> {/^0/.test(this.state.selectedDoctor.phone) ? this.state.selectedDoctor.phone : '0' + this.state.selectedDoctor.phone}
+</ListGroupItem>
               <ListGroupItem><b>Description:</b> {this.state.selectedDoctor.description}
               </ListGroupItem>
               <ListGroupItem><b>Program:</b> {this.state.selectedDoctor.program}
               </ListGroupItem>
-              <button className="button3" style={{ textAlign: 'center' }} onClick={this.handleUpdate}>Update</button>
+              <button className="button-33" style={{ textAlign: 'center' }} onClick={this.handleUpdate}>Update</button>
         </ListGroup>
         </CardBody>
         </Card>
@@ -111,7 +118,7 @@ class DoctorHome extends React.Component {
        buttonName="Update"
        doctor={this.state.selectedDoctor}
        handleSubmit={this.handleSubmit}/>}
-        </Jumbotron>
+        </div>
       </div>
     );
   }

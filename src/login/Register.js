@@ -1,12 +1,16 @@
 import React from "react"
-import {Form,FormGroup,Input,Label,Button,InputGroup} from "reactstrap"
+import {Form,FormGroup,Input,Label,Button,InputGroup, Row, Col} from "reactstrap"
 import {Link} from "react-router-dom"
 import { FaUser,FaLock } from "react-icons/fa";
 import axios from "axios"
 import isEmail from 'validator/lib/isEmail';
-import BackgroundImg from "../Images/firstPage.png";
+import BackgroundImg from '../Images/doctor_2.gif';
 import Jumbotron from "react-bootstrap/Jumbotron";
+import DatePicker from 'react-datepicker';
 import NotLoggedNavBar from "../navBars/NotLoggedNavBar";
+import 'react-datepicker/dist/react-datepicker.css';
+import validator from 'validator' 
+
 
 const backgroundStyle = {
     backgroundPosition: 'center',
@@ -33,12 +37,15 @@ class Register extends React.Component{
             email:"",
             birth:"",
             usernameExist:"false",
-            usernameNotMail:"false",
+            usernameNotMail:false,
             passwordError:"true",
-            savedUser:{}
+            phoneNumberValid:true,
+            savedUser:{},
+            birth: new Date(),
         }
         this.handleChange=this.handleChange.bind(this)
         this.handleClick=this.handleClick.bind(this)
+        this.handleDate=this.handleDate.bind(this)
 
     }
 
@@ -88,6 +95,11 @@ class Register extends React.Component{
             usernameNotMail:"true"
         })
     }
+    handleDate(date) {
+        this.setState({
+          birth: date,
+        });
+      }
 
     handleChange(event){
         console.log(event.target.value)
@@ -95,18 +107,38 @@ class Register extends React.Component{
         this.setState({
             [name]:value
         })
+        if (name === "username") {
+            var isEmail = /\S+@\S+\.com+/.test(value);
+            console.log(isEmail);
+                this.setState({
+                    usernameNotMail:isEmail
+            })
+        }
+        if (name === "phone") {
+            var isPhoneNumber = /^0\d{9}$/.test(value);
+            console.log(isPhoneNumber);
+            this.setState({
+                phoneNumberValid: isPhoneNumber
+            });
+        }
+        
     }
     render(){
         return(
             <div className="body">
                 <NotLoggedNavBar/>
-                <Jumbotron fluid style={backgroundStyle}>
-                <Form className="register-form">
+                
+                <div className="logo-container-register">
+              <img src={require("../Images/this.png")} alt="Logo"/>
+              </div>
+
+            
+                <Form className="register-form" >
                     <span>
                         <h3>Register</h3>
-                    </span>
+                    </span>               
                     <FormGroup>
-                        {this.state.usernameNotMail==="true" ?
+                        {!this.state.usernameNotMail ?
                          <Label className="register-label">Not a valid email address*</Label> :
                         this.state.usernameExist==="false" ?
                                                 <Label className="login-label">Email</Label>
@@ -119,6 +151,9 @@ class Register extends React.Component{
                         placeholder="Username"
                         />
                     </FormGroup>
+                    <Row form>
+                    <Col md={6}>
+                    
                     <FormGroup>
                         {this.state.passwordError==="true" ?
                                     <Label className="login-label">Password</Label>
@@ -131,6 +166,8 @@ class Register extends React.Component{
                         placeholder="Password"
                         />
                     </FormGroup>
+                    </Col>
+                    <Col md={6}>
                     <FormGroup>
                     {this.state.passwordError==="true" ?
                                     <Label className="login-label">Password</Label>
@@ -145,6 +182,11 @@ class Register extends React.Component{
                         />
                         </InputGroup>
                     </FormGroup>
+                    </Col>
+                    </Row>
+                    
+                    <Row form>
+                        <Col md={6}>
                     <FormGroup>
                         <Label className="login-label">First Name</Label>
                         <Input className="input" type="text"
@@ -154,6 +196,8 @@ class Register extends React.Component{
                         placeholder="First name"
                         />
                     </FormGroup>
+                    </Col>
+                    <Col md={6}>
                     <FormGroup>
                         <Label className="login-label">Second Name</Label>
                         <Input className="input" type="text"
@@ -163,6 +207,8 @@ class Register extends React.Component{
                         placeholder="Second name"
                         />
                     </FormGroup>
+                    </Col>
+                    </Row>
                     <FormGroup>
                         <Label className="login-label">Address</Label>
                         <Input className="input" type="text"
@@ -173,37 +219,55 @@ class Register extends React.Component{
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label className="login-label">Phone</Label>
-                        <Input className="input" type="text"
-                        name="phone"
-                        onChange={this.handleChange}
-                        value={this.state.phone}
-                        placeholder="Phone"
-                        />
-                    </FormGroup>
+    {!this.state.phoneNumberValid ?
+        <Label className="register-label">Not a valid phone number*</Label> :
+        <Label className="login-label">Phone</Label>
+    }
+    <Input className="input" type="text"
+        name="phone"
+        onChange={this.handleChange}
+        value={this.state.phone}
+        placeholder="Phone"
+    />
+</FormGroup>
+                    
+                    <Form>
                     <FormGroup>
-                        <Label className="login-label">Gender</Label>
-                        <Input className="input" type="text"
-                        name="gender"
-                        onChange={this.handleChange}
-                        value={this.state.gender}
-                        placeholder="Gender"
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label className="login-label">Birth</Label>
-                        <Input className="input" type="text"
-                        name="birth"
-                        onChange={this.handleChange}
-                        value={this.state.birth}
-                        placeholder="Birth"
-                        />
-                    </FormGroup>
+                    <Label className="login-label">Birth</Label>
+                    
+                     <DatePicker 
+                    className="input"
+                    selected={this.state.birth}
+                    onChange={this.handleDate}
+                     dateFormat="yyyy-MM-dd"
+                     placeholder="Birth"
+                     />
+        </FormGroup>
+        <Label className="login-label">Gender</Label>
+    <FormGroup tag={Row}>
+        <FormGroup tag={Col} md={6}>
+            <FormGroup check>
+                <Label check>
+                    <Input type="radio" name="gender" value="Male" checked={this.state.gender === 'Male'} onChange={this.handleChange} />{' '}
+                    Male
+                </Label>
+            </FormGroup>
+        </FormGroup>
+        <FormGroup tag={Col} md={6}>
+            <FormGroup check>
+                <Label check>
+                    <Input type="radio" name="gender" value="Female" checked={this.state.gender === 'Female'} onChange={this.handleChange} />{' '}
+                    Female
+                </Label>
+            </FormGroup>
+        </FormGroup>
+    </FormGroup>
+</Form>         
                     <Button className="btn-lg btn-dark btn-block"
                     onClick={this.handleClick}>Submit</Button>
                 </Form>
-                </Jumbotron>
-            </div>
+                </div>
+           
         )
     }
 }

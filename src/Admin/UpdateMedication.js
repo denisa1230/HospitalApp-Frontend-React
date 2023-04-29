@@ -33,7 +33,7 @@ class UpdateMedication extends React.Component{
     render(){
         return(
             <div className="jumbotron">
-                <Jumbotron></Jumbotron>
+                <Jumbotron>
                <Form className="login-form">
 
                      <h3>
@@ -65,7 +65,7 @@ class UpdateMedication extends React.Component{
                     <Button className="btn-lg btn-block btn-succes" 
                     onClick={this.props.handleSubmit.bind(this.props,this.state.medicine)}>{this.state.buttonName}</Button>
                 </Form>
-
+                </Jumbotron>
             </div>
         )
     }

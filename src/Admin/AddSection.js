@@ -2,8 +2,8 @@ import React from 'react';
 import AdminNavBar from "../navBars/AdminNavBar"
 import UpdateSection from "./UpdateSection"
 import axios from "axios"
-import Jumbotron from "react-bootstrap/Jumbotron";
-import BackgroundImg from '../Images/section.jpg';
+import BackgroundImg from '../Images/firstPage.png';
+import Swal from 'sweetalert2';
 
 const backgroundStyle = {
     backgroundPosition: 'center',
@@ -12,7 +12,7 @@ const backgroundStyle = {
     width: "100%",
     height: "100%",
     backgroundImage: `url(${BackgroundImg})`
-};
+  };
 
 
 class AddSection extends React.Component{
@@ -42,8 +42,11 @@ class AddSection extends React.Component{
             axios.post("http://localhost:8080/section/saveSection",section
             ).then(response=>{
               this.props.history.push("/Sections")
+            }).then(response=>{
+                Swal.fire('Section added')
+                this.props.history.push("/Sections")
+              
             })
-            console.log(section)
            
           
     }
@@ -63,18 +66,30 @@ class AddSection extends React.Component{
 
     render(){
         return(
-            <div>
+
+            <div style={backgroundStyle}>
+               
                  <AdminNavBar
                 notificationPage="false"/>
-                <div>
-                <Jumbotron >
+                <div >
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <UpdateSection
                 title="Create Section"
                 buttonName="Submit"
                 hospitals={this.state.hospitals}
                 section={this.state.section}
                 handleSubmit={this.handleSubmit}/>
-                </Jumbotron>
+                 <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 </div>
             </div>
         )

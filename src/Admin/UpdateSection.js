@@ -1,7 +1,6 @@
 import React from "react"
 import {Form,FormGroup,Input,Label,Button} from "reactstrap"
 import axios from "axios"
-import Jumbotron from "react-bootstrap/Jumbotron";
 
 class UpdateSection extends React.Component{
     constructor(props){
@@ -58,9 +57,14 @@ class UpdateSection extends React.Component{
 
     render(){
         return(
-            <div className="jumbotron">
-                <Jumbotron>
-               <Form className="login-form">
+            <div >
+                 <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+               <Form className="login-form" >
 
                      <h3>
                         <span className="user-message">
@@ -93,7 +97,12 @@ class UpdateSection extends React.Component{
                     <Button className="btn-lg btn-block btn-succes" 
                     onClick={this.props.handleSubmit.bind(this.props,this.state.section)}>{this.state.buttonName}</Button>
                 </Form>
-                </Jumbotron>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </div>
         )
     }

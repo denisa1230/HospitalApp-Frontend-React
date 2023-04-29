@@ -101,6 +101,20 @@ class AddDoctor extends React.Component{
         this.setState({
             [name]:value
         })
+        if (name === "username") {
+            var isEmail = /\S+@\S+\.com+/.test(value);
+            console.log(isEmail);
+                this.setState({
+                    emailNotMail:isEmail
+            })
+        }
+         if (name === "phone") {
+            var isPhoneNumber = /^0\d{9}$/.test(value);
+            console.log(isPhoneNumber);
+            this.setState({
+                phoneNumberValid: isPhoneNumber
+            });
+        }
     }
 
     getSection(){
@@ -182,7 +196,7 @@ class AddDoctor extends React.Component{
                 <Media left href="#">
                     <Media src={BackgroundImg}   />
                 </Media>
-                <Form className="register-form">
+                <Form className="register-formm">
                     <span>
                         <h3>Register Doctor</h3>
                     </span>
@@ -261,13 +275,17 @@ class AddDoctor extends React.Component{
                     </Col>
                     </Row>
                     <FormGroup>
-                            <Label className="login-label">Phone Number</Label>
-                        <Input className="input" type="text" name="phone"
-                        onChange={this.handleChange}
-                        value={this.state.phone}
-                        placeholder="Phone Number"
-                        />  
-                        </FormGroup>
+    {!this.state.phoneNumberValid ?
+        <Label className="register-label">Not a valid phone number*</Label> :
+        <Label className="login-label">Phone</Label>
+    }
+    <Input className="input" type="text"
+        name="phone"
+        onChange={this.handleChange}
+        value={this.state.phone}
+        placeholder="Phone"
+    />
+    </FormGroup>
                         <FormGroup>
                         <Label className="login-label">Program Available</Label>
                         <Input className="input" type="text" name="program"

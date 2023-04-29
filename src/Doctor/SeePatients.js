@@ -4,9 +4,9 @@ import axios from "axios"
 import { Button, Col, Container, Row } from "reactstrap";
 import ReactTable from "react-table-6";
 import { Card, CardBody, Jumbotron, ListGroup, ListGroupItem } from "reactstrap";
-import image1 from "../Images/doctor1.jpg";
+import image1 from "../Images/AddHospital.jpg";
 
-const textStyle = { color: "black", fontWeight: "bold" };
+const textStyle = { color: "#343434", fontWeight: "bold" };
 
 const backgroundStyle = {
   backgroundPosition: "center",
@@ -108,7 +108,7 @@ handleClickConsultation(index) {
               
               <div>
                 <br></br>
-                <br></br>
+                
                 <Row>
                   <Col ssm="6" md={{ size: 8, offset: 3 }}>
                     <Card>
@@ -187,7 +187,7 @@ handleClickConsultation(index) {
                        <button className="button-33" onClick={() => this.handleClickConsultation(this.state.selected)} disabled={this.state.selected === -1}>Make A Consultation</button>
                       </div>
                         )}
-                      </CardBody></Card></Col></Row> <br /><br />
+                      </CardBody></Card></Col></Row> 
                       </div>
                
             </Container>

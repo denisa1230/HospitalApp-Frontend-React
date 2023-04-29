@@ -1,3 +1,15 @@
+.login-form1{
+  background-color:whitesmoke;
+  max-width:300px;
+  padding:2px;
+  margin-left: 65% ;
+  margin-top: 22%;
+  height: 150%;
+  color:rgb(7, 7, 7);
+  border-radius: 20px;
+  position:relative;
+}
+
 .login-form{
   background-color:whitesmoke;
   max-width:300px;
@@ -6,6 +18,46 @@
   margin-top: 5%;
   height: 150%;
   color:black;
+}
+
+.login-form-patient{
+  background-color:whitesmoke;
+  max-width:300px;
+  padding:15px;
+  margin:auto;
+  margin-top: 5%;
+   color:black;
+}
+
+
+.login-form-APP{
+  background-color:whitesmoke;
+  max-width:300px;
+  padding:15px;
+  margin:auto;
+  margin-top: 5%;
+
+  color:black;
+}
+
+.login-form-doctor{
+  background-color:whitesmoke;
+  max-width:300px;
+  padding:30px;
+  margin:auto;
+  margin-left: 70%;
+  color:black;
+  height: 100;
+}
+
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  width: 50%;
+  height: 50%;
 }
 div.c {
   text-indent: 200px;
@@ -49,6 +101,7 @@ div.b {
   margin:auto;
   height: 150%;
   color:black;
+  margin-left: 57%;
 }
 .register-form2{
   background-color:whitesmoke;
@@ -125,6 +178,27 @@ div.b {
   margin-top:7%;
 }
 
+.cardW-Patient{
+  width: 30%;
+  margin: auto;
+  margin-left: 66%;
+}
+
+.cardW-doctor{
+  width: 30%;
+  margin: auto;
+  
+  margin-left: 66%
+}
+
+.register-formm{
+  background-color:whitesmoke;
+  max-width:500px;
+  padding:15px;
+  margin:auto;
+  height: 150%;
+  color:black;
+}
 
 
 
@@ -157,3 +231,116 @@ div.b {
   font-weight: bold;
 }
 
+
+p {
+  font-size: 3vw;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  
+}
+.imgg{
+  padding: auto;
+  width: 60%;
+  height: 100%;
+  position: absolute;
+}
+.imgg-home{
+  padding: auto;
+  width: 25%;
+  height: 25%;
+  position: relative;
+  margin-top: 20%;
+  margin-left: 70%;
+}
+.align-text{
+  width: 120%;
+  margin-top: 5%;
+  margin-left: 95%;
+}
+.imgg-app{
+  padding: auto;
+  width: 70%;
+  height: 120%;
+  position: absolute;
+}
+.imggg{
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  margin-left: 27%;
+}
+
+.imgApp{
+  width: 80%;
+  height: 80%;
+  align-items: center;
+  margin-left: 7%;
+}
+
+.imgPatient{
+  width: 70%;
+  height: 70%;
+  align-items: center;
+  margin-left: 14%;
+}
+.imgggg{
+  width: 70%;
+  height: 70%;
+  align-items: center;
+  margin-left: 17%;
+}
+.fancy {
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    background-image: 
+      url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%2300A080' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%2300FDCF'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%2300FDCF'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23008060'/%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: 110% auto;
+    background-position: center;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+.logo-container {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  position:absolute;
+}
+.logo-container-home {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position:absolute;
+}
+.logo-container-register {
+   display: flex;
+   position:absolute;
+ }
+
+.login-header{
+  margin-top:7%;
+  align-items: center;
+  margin-right: 10%;
+  margin-left: 80%;
+}
+.login-header-home{
+  margin-top:7%;
+
+  margin-right: 10%;
+  margin-left: 10%;
+}
+.input {
+  border: 1px solid rgb(229, 225, 225 );
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  height:50%;
+  width: 100%;
+}
+.align{
+  align-items: center;
+  margin-left: 72%;
+}

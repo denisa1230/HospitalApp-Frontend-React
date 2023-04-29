@@ -37,6 +37,8 @@ import AproveAppoiment from './Doctor/AproveAppoiment';
 import SeePatients from './Doctor/SeePatients';
 import MakeConsultation from './Doctor/MakeConsultation';
 import ViewConsultation from './Patient/ViewConsultation';
+import Chart from './Admin/Chart';
+import ViewChart from './Admin/ViewChart';
 
 function App() {
   return (
@@ -78,6 +80,8 @@ function App() {
                         <Route exact path="/SeePatients" component={SeePatients}/>
                         <Route exact path="/MakeConsultation" component={MakeConsultation}/>
                         <Route exact path="/ViewConsultation" component={ViewConsultation}/>
+                        <Route exact path="/Chart" component={Chart}/>
+                        <Route exact path="/ViewChart" component={ViewChart}/>
                     </BrowserRouter>
                     </div>
   );

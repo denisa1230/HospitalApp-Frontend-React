@@ -3,7 +3,16 @@ import AdminNavBar from "../navBars/AdminNavBar"
 import UpdateDiagnostic from "./UpdateDiagnostic"
 import axios from "axios"
 import Swal from 'sweetalert2';
-import Jumbotron from "react-bootstrap/Jumbotron";
+import BackgroundImg from '../Images/b.png';
+
+const backgroundStyle = {
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    width: "100%",
+    height: "100%",
+    backgroundImage: `url(${BackgroundImg})`
+  };
 
 
 
@@ -38,17 +47,29 @@ class AddDiagnostic extends React.Component{
 
     render(){
         return(
-            <div>
+            <div style={backgroundStyle}>
                  <AdminNavBar
                 notificationPage="false"/>
                 <div >
-                <Jumbotron >
+               
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <UpdateDiagnostic
                 title="Create Diagnostic"
                 buttonName="Submit"
                 diagnostic={this.state.diagnostic}
                 handleSubmit={this.handleSubmit}/>
-                </Jumbotron>
+              
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 </div>
             </div>
         )

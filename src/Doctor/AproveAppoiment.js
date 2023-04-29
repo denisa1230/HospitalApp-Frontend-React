@@ -8,7 +8,7 @@ import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
 import BackgroundImg from '../Images/medicine.jpg';
 
-const textStyle = {color: 'black',  fontWeight: 'bold' };
+const textStyle = {color: '#343434',  fontWeight: 'bold' };
 const backgroundStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -84,7 +84,7 @@ class AproveAppoiment extends React.Component{
                 <DoctorNavBar
                 notificationPage="true"/>
                 <Container fluid style={backgroundStyle}>
-                    <div className="c"><h1 className=  "display-3" style={textStyle}><center> Approve Appoiment</center></h1></div>
+                    <div className="c"><h1 className=  "display-3" style={textStyle}><center> Approve Appointment</center></h1></div>
                 <div><br/><br/>
                     <Row><Col ssm="6" md={{ size: 8, offset: 3 }}><Card><CardBody>
                <ReactTable

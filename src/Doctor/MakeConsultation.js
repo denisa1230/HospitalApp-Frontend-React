@@ -3,11 +3,12 @@ import axios from "axios";
 import DoctorNavBar from "../navBars/DoctorNavBar";
 import "react-table-6/react-table.css";
 import { Form, FormGroup, Input, Label, Button, Col, Row } from "reactstrap";
-import BackgroundImg from "../Images/medicine.jpg";
+import BackgroundImg from "../Images/AddHospital.jpg";
 import ReactTable from "react-table-6"
 import "react-table-6/react-table.css"
 import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
+import Swal from 'sweetalert2';
 
 const textStyle = { color: "black", fontWeight: "bold" };
 const backgroundStyle = {
@@ -118,6 +119,7 @@ class MakeConsultation extends React.Component {
       },
       drugs: selectedDrugs
     }).then(response=>{
+      Swal.fire('The consultation was completed successfully')
       this.props.history.push("/SeePatients")
   })
   }
@@ -148,9 +150,13 @@ render() {
     <div style={backgroundStyle}>
     <DoctorNavBar />
     <Form className="login-form">
+    <img className="imgggg" src={require("../Images/consultation.gif")} alt="Logo"/>
+    <br/>
+    <br/>
     <h3>
     <span className="user-message">Make a Consultation</span>
     </h3>
+    
     <FormGroup>
     <Label className="add-label">Consultation Details</Label>
     <Input
@@ -176,8 +182,14 @@ render() {
 ))}
   </Input>
 </FormGroup>
-    <Button color="primary" onClick={this.handleSubmit}>Add Medicine</Button>
+    <Button className="button-33" onClick={this.handleSubmit}>Add Medicine</Button>
     </Form>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     {this.state.table==="true" ?
                 <div><br/><br/><br></br>
                 <Row><Col ssm="6" md={{ size: 8, offset: 3 }}><Card><CardBody>
@@ -240,7 +252,7 @@ render() {
                             }
                         }}
                     />
-                    <button className="button2" onClick={this.handleDrugs}>Make Consultation</button>
+                    <button className="button-33" onClick={this.handleDrugs}>Make Consultation</button>
                 </CardBody></Card></Col></Row><br/><br/>
             </div>
             

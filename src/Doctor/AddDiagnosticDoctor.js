@@ -43,11 +43,21 @@ class DiagnosticHome extends React.Component{
             <div>
                 <DoctorNavBar/>
                 <Jumbotron fluid style={backgroundStyle}>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <ViewDiagnosticDoctor
                 title="Create Diagnostic"
                 buttonName="Submit"
                 diagnostic={this.state.diagnostic}
                 handleSubmit={this.handleSubmit}/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 </Jumbotron>
             </div>
         )

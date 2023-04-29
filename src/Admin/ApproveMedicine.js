@@ -6,9 +6,9 @@ import "react-table-6/react-table.css"
 import {Button, Col, Container, Row} from "reactstrap"
 import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
-import BackgroundImg from '../Images/medicine.jpg';
+import BackgroundImg from '../Images/drug.jpg';
 
-const textStyle = {color: 'black',  fontWeight: 'bold' };
+const textStyle = {color: '#343434',  fontWeight: 'bold' };
 const backgroundStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',

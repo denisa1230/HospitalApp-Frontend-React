@@ -52,9 +52,11 @@ class DoctorProfile extends React.Component {
       return (
         <div className="body">
         <PatientNavBar />
-        <Jumbotron fluid style={backgroundStyle}>
+        <div className="logo-container-home">
+                    <img className="imgg" src={require("../Images/doctor8.png")} alt="Logo"/>
         
-          <Card  className="cardW">
+          <Card  className="cardW-doctor">
+          <img className="imggg" src={require("../Images/doctor1.jpg")} alt="Logo"/>
           <span>
              <h3 align="center">Doctor profile</h3>
            </span>
@@ -77,7 +79,7 @@ class DoctorProfile extends React.Component {
         </CardBody>
         </Card>
        
-        </Jumbotron>
+       </div>
       </div>
     );
       }

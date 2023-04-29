@@ -9,7 +9,7 @@ import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
 import BackgroundImg from '../Images/drug.jpg';
 
-const textStyle = {color: 'black',  fontWeight: 'bold' };
+const textStyle = {color: '#343434',  fontWeight: 'bold' };
 const backgroundStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',

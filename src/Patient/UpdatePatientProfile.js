@@ -48,10 +48,10 @@ class UpdatePatientProfile extends React.Component{
 
     render(){
         return(
-            <Jumbotron style={backgroundStyle}>
-            <div>
+            
+            <div className="login-form-doctor">
                 
-                 <Form className="login-form">
+                 <Form >
                     <h3>
                         <span className="user-message">
                                  {this.state.title}
@@ -123,7 +123,7 @@ class UpdatePatientProfile extends React.Component{
                 </Form>
                
             </div>
-            </Jumbotron>
+           
         )
     }
 }

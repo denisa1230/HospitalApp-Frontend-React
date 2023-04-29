@@ -41,14 +41,26 @@ class MedicineHome extends React.Component{
     render(){
         return(
             <div>
+                
                 <DoctorNavBar/>
                 <Jumbotron fluid style={backgroundStyle}>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <ViewMedicineDoctor
                 title="Create medicine"
                 buttonName="Submit"
                 medication={this.state.medicine}
                 handleSubmit={this.handleSubmit}/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 </Jumbotron>
+                
             </div>
         )
     }

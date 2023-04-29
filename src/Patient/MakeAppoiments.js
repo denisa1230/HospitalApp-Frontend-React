@@ -3,8 +3,9 @@ import PatientNavBar from "../navBars/PatientNavBar";
 import {Button, Form, FormGroup, Jumbotron, Table,Input,Label} from "reactstrap";
 import 'react-calendar/dist/Calendar.css';
 import Calendar from "react-calendar";
+import 'react-calendar/dist/Calendar.css';
 import axios from "axios";
-
+import Swal from 'sweetalert2';
 const backgroundStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -118,6 +119,7 @@ class MakeAppoiments extends React.Component {
             status:"PENDING"
             
         }).then(response=>{
+          Swal.fire('Appointment was made successfully')
             this.props.history.push("/ViewAppoiments")
         })
     }
@@ -220,14 +222,16 @@ class MakeAppoiments extends React.Component {
         return (
             <div className="body">
                 <PatientNavBar />
-                <Jumbotron fluid style={backgroundStyle}>
+                <div className="logo-container-home">
+                    <img className="imgg-app" src={require("../Images/SEEDOCTOR.png")} alt="Logo"/>
+               
                     <Form className="align">
                         <FormGroup className="calendar">
                             <span>
-                                <h2>Select data:</h2>
+                                
                             </span>
                             <Form>
-                                <div>
+                                <div className='calendar-container'>
                                     <Calendar
                                         onChange={this.onChange}
                                         value={this.state.date}
@@ -237,7 +241,8 @@ class MakeAppoiments extends React.Component {
                             </Form>
                         </FormGroup>
                         {showForm && (
-                            <FormGroup>
+                            <FormGroup className="login-form-APP">
+                              <img className="imgApp" src={require("../Images/makeAA.png")} alt="Logo"/>
                                 <h2>Make an appointment:</h2>
                                 <Form>
                                 <FormGroup>
@@ -273,13 +278,13 @@ class MakeAppoiments extends React.Component {
                                      ))}
                                     </Input>
                                     </FormGroup>
-                                    <Button color="primary" onClick={this.handleMakeAppointment}> Make appointment </Button>
+                                    <Button className="button-33" onClick={this.handleMakeAppointment}> Make appointment </Button>
                                 </Form>
                             </FormGroup>
                             
                         )}
                     </Form>
-                </Jumbotron>
+               </div>
             </div>
         );
     }

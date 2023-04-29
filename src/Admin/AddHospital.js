@@ -4,6 +4,7 @@ import UpdateHospital from "./UpdateHospital"
 import axios from "axios"
 import BackgroundImg from '../Images/AddHospital.jpg';
 import Jumbotron from "react-bootstrap/Jumbotron";
+import Swal from 'sweetalert2';
 
 const backgroundStyle = {
     backgroundPosition: 'center',
@@ -43,6 +44,7 @@ class AddHospital extends React.Component{
               country:hospital.country
             }).then(response=>{
               this.props.history.push("/Hospital")
+              Swal.fire('Hospital added')
             })
            
           

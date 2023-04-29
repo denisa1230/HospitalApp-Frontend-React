@@ -83,9 +83,12 @@ class PatientHome extends React.Component {
     return (
         <div className="body">
         <PatientNavBar />
-        <Jumbotron fluid style={backgroundStyle}>
+        <div className="logo-container-home">
+                    <img className="imgg" src={require("../Images/patient.jpg")} alt="Logo"/>
+        
         {this.state.update==="false" ?
-          <Card  className="cardW">
+          <Card  className="cardW-Patient">
+            <img className="imgPatient" src={require("../Images/patientProfile.jpg")} alt="Logo"/>
           <span>
              <h3 align="center">Patient profile</h3>
            </span>
@@ -103,7 +106,7 @@ class PatientHome extends React.Component {
               </ListGroupItem>
               <ListGroupItem><b>Gender:</b> {this.state.selectedPatient.gender}
               </ListGroupItem>
-              <button className="button3" style={{ textAlign: 'center' }} onClick={this.handleUpdate}>Update</button>
+              <button className="button-33" style={{ textAlign: 'center' }} onClick={this.handleUpdate}>Update</button>
         </ListGroup>
         </CardBody>
         </Card>
@@ -113,7 +116,8 @@ class PatientHome extends React.Component {
        buttonName="Update"
        patient={this.state.selectedPatient}
        handleSubmit={this.handleSubmit}/>}
-        </Jumbotron>
+        
+        </div>
       </div>
     );
   }
