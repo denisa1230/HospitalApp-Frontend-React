@@ -16,8 +16,9 @@ function DoctorNavBar(){
                 </NavDropdown>
                 </Nav>
                     <Nav className="justify-content-end">
-                       
+                    <Nav.Link href="/">Reset Password</Nav.Link>
                         <Nav.Link href="/">Log Out</Nav.Link>
+                        
                     </Nav>
         </Navbar>
     )

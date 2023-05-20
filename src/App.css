@@ -231,7 +231,35 @@ div.b {
   font-weight: bold;
 }
 
+.alignPie{
 
+margin-left: 36%;
+
+
+}
+.alignChart{
+  margin-top:10%;
+  margin-left: 16%;
+  
+  }
+  .alignBar{
+    margin-left: 16%;
+    
+    }
+  
+    .charts-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100vh;
+      margin-right: 20px;
+    }
+    
+    .chart-item {
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    
 p {
   font-size: 3vw;
   text-transform: uppercase;
@@ -242,6 +270,12 @@ p {
 .imgg{
   padding: auto;
   width: 60%;
+  height: 100%;
+  position: absolute;
+}
+.imgg-chart{
+  padding: auto;
+  width: 40%;
   height: 100%;
   position: absolute;
 }

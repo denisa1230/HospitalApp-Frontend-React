@@ -10,6 +10,7 @@ import Card from "react-bootstrap/Card";
 import CardBody from "reactstrap/es/CardBody";
 import Swal from 'sweetalert2';
 
+
 const textStyle = { color: "black", fontWeight: "bold" };
 const backgroundStyle = {
   backgroundPosition: "center",
@@ -28,7 +29,7 @@ class MakeConsultation extends React.Component {
         details : "",
         appointment: [],
         diagnostic: [],
-        
+        status:""
       },
       consultationMedicine:{
       consultations:[],
@@ -115,7 +116,8 @@ class MakeConsultation extends React.Component {
       consultation:{
       details: this.state.consultation.details,
       appointment: this.state.selectedAppointment,
-      diagnostic: this.state.selectedDiagnosticObj
+      diagnostic: this.state.selectedDiagnosticObj,
+      
       },
       drugs: selectedDrugs
     }).then(response=>{

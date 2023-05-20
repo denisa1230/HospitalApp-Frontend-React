@@ -39,6 +39,7 @@ import MakeConsultation from './Doctor/MakeConsultation';
 import ViewConsultation from './Patient/ViewConsultation';
 import Chart from './Admin/Chart';
 import ViewChart from './Admin/ViewChart';
+import Reset from './Shared/Reset'
 
 function App() {
   return (
@@ -82,6 +83,7 @@ function App() {
                         <Route exact path="/ViewConsultation" component={ViewConsultation}/>
                         <Route exact path="/Chart" component={Chart}/>
                         <Route exact path="/ViewChart" component={ViewChart}/>
+                        <Route exact path="/Reset" component={Reset}/>
                     </BrowserRouter>
                     </div>
   );

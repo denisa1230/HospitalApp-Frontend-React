@@ -4,6 +4,10 @@ import 'react-calendar/dist/Calendar.css';
 import Chart from "./Chart";
 import Calendar from "react-calendar";
 import axios from "axios";
+import AdminNavBar from "../navBars/AdminNavBar"
+import PieGrafic from "./PieGrafic";
+import CustomBarChart from "./CustomBarChart"
+import { BarChart } from "recharts";
 
 const backgroundStyle = {
     backgroundPosition: 'center',
@@ -58,7 +62,7 @@ class DailyEnergyConsumption extends React.Component {
             deviceId: this.state.device.id
         }
 
-        axios.put('http://localhost:8090/DEC/getConsumption', timestampRequest).then(
+        axios.put('http://localhost:8090/appointments/findAllAppointments', timestampRequest).then(
             response => {
                 if(response.data.length == 1)
                     this.setState({
@@ -87,21 +91,15 @@ class DailyEnergyConsumption extends React.Component {
     render() {
         return (
             <div className="body">
+              
+               <AdminNavBar />
+               
+                    <img className="imgg-chart" src={require("../Images/g.gif")} alt="Logo"/>
+                    <Chart/><PieGrafic/>
+                 
+                <CustomBarChart/>
                 
-                <Jumbotron fluid style={backgroundStyle}>
-                    <Form className="align">
-                        
-
-                        <FormGroup className="graphic">
-                            {this.state.viewChart === "true" ?
-                                <Chart
-                                    consumption={this.state.graphicConsumption}
-                                /> : null}
-                            {this.state.noChart === "true" ?
-                                <h1>No chart for this data</h1> : null}
-                        </FormGroup>
-                    </Form>
-                </Jumbotron>
+               
             </div>
 
         );

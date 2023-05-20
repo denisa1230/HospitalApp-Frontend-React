@@ -5,6 +5,9 @@ import { Button, Col, Container, Row } from "reactstrap";
 import ReactTable from "react-table-6";
 import { Card, CardBody, Jumbotron, ListGroup, ListGroupItem } from "reactstrap";
 import image1 from "../Images/AddHospital.jpg";
+import NotificationManager from 'react-notifications/lib/NotificationManager';
+import { NotificationContainer } from "react-notifications";
+import 'react-notifications/lib/notifications.css'
 
 const textStyle = { color: "#343434", fontWeight: "bold" };
 
@@ -61,7 +64,7 @@ getDoctorByAccount() {
         var allAppointments=response.data
         var pendingAppoiments=[]
         for(var i=0;i<allAppointments.length;i++){
-            if(allAppointments[i].status==="Approved Appointment" || allAppointments[i].status==="Canceled Appointment") 
+            if(allAppointments[i].status==="Approved Appointment" || allAppointments[i].status==="Consulted") 
             pendingAppoiments.push(allAppointments[i])
         }
         this.setState({
@@ -89,10 +92,18 @@ getDoctorByAccount() {
   })
 }
 handleClickConsultation(index) {
+
   const selectedAppointment = this.state.appoiments[index].idAppointment;
+  if (this.state.appoiments[index].status==='Consulted')
+  {
+    
+    NotificationManager.info("Consultatia a fost deja facuta!", 'Alert',6000);
+  }
+  else{
   localStorage.setItem("selectedAppointment", selectedAppointment);
   console.log(selectedAppointment)
   this.props.history.push(`/MakeConsultation`);
+  }
 }
 
     render(){
@@ -100,6 +111,7 @@ handleClickConsultation(index) {
         return(
             <div>
             <DoctorNavBar notificationPage="false" /> 
+            <NotificationContainer/>
             <Container fluid style={backgroundStyle}>
               <div className="c">
                 <h1 className="display-3" style={textStyle}>

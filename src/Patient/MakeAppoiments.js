@@ -6,6 +6,10 @@ import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import axios from "axios";
 import Swal from 'sweetalert2';
+import NotificationManager from 'react-notifications/lib/NotificationManager';
+import { NotificationContainer } from "react-notifications";
+import 'react-notifications/lib/notifications.css'
+
 const backgroundStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -73,6 +77,11 @@ class MakeAppoiments extends React.Component {
     }
    
     onChange = data => {
+      const dayOfWeek = data.getDay();
+      if (dayOfWeek === 6 || dayOfWeek === 0) {
+        NotificationManager.info("Programările nu se fac în weekend!", 'Alert',6000);
+        return;
+      }
         this.setState({data})
         var day = data.getDate()
         var month = data.getMonth() + 1
@@ -90,23 +99,24 @@ class MakeAppoiments extends React.Component {
           this.handleSelectHourByAppoiment();
         }
         
+        
     }
 
     handleMakeAppointment() {
         if (!this.state.selectedDoctor) {
-            alert('Selectați un doctor');
+          NotificationManager.info('Selectați un doctor');
             return;
           }
         // Verificăm dacă s-a selectat o oră 
           if (!this.state.oraSelectata) {
-            alert('Selectați o oră între 9 și 17');
+            NotificationManager.info('Selectați o oră între 9 și 17');
             return;
           }
         
           // Verificăm dacă data selectată este în viitor
           const today = new Date();
           if (this.state.data < today) {
-            alert("Data selectata este mai veche decat data curenta. Va rugam sa alegeti o data valida!");
+            NotificationManager.info("Data selectata este mai veche decat data curenta. Va rugam sa alegeti o data valida!");
             return;
           }
          
@@ -222,6 +232,7 @@ class MakeAppoiments extends React.Component {
         return (
             <div className="body">
                 <PatientNavBar />
+                <NotificationContainer/>
                 <div className="logo-container-home">
                     <img className="imgg-app" src={require("../Images/SEEDOCTOR.png")} alt="Logo"/>
                

@@ -116,7 +116,7 @@ class ViewConsultation extends React.Component {
                   data={this.state.consultation}
                   columns={[
                     {
-                      Header: "Details",
+                      Header: "Diagnostic",
                       accessor: "details"
                     },
                     {

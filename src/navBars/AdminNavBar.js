@@ -45,6 +45,7 @@ class AdminNavBar extends React.Component{
            <img src={require("../Images/icon.png")} alt="Logo" height="30" width="30" className="d-inline-block align-top" />
             <Nav className="mr-auto">
                 <Nav.Link href="/AdminHome">Home</Nav.Link>
+               
                 <NavDropdown title="Medicine Operations">
                     <NavDropdown.Item href="/Medicines">Update/Delete</NavDropdown.Item>
                     <NavDropdown.Item href="/AddMedicine">Add Medicine</NavDropdown.Item>
@@ -70,7 +71,9 @@ class AdminNavBar extends React.Component{
                  <Nav.Link href="/ViewChart">Statistic</Nav.Link>
                 </Nav>
                     <Nav className="justify-content-end">
+                    <Nav.Link href="/">Reset Password</Nav.Link>
                         <Nav.Link href="/">Log Out</Nav.Link>
+                       
                 </Nav>
                
         </Navbar>    

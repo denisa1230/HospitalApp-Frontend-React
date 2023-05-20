@@ -1,47 +1,43 @@
 import React from "react"
 import {LineChart, ResponsiveContainer, Legend, Tooltip, Line, XAxis, YAxis, CartesianGrid} from 'recharts';
-
-const pdata = [];
+import axios from "axios";
 
 class Chart extends React.Component {
-
     constructor(props) {
         super(props)
         this.state = {
-            consumption: props.consumption,
-            axis: [],
-            data:[]
+            data: [],
         }
-
     }
 
     componentDidMount() {
-
-        for (var j = 0; j < 24; j++) {
-            let d = {
-                name: j,
-                hour: j,
-                consumption: this.state.consumption[j]
-            };
-            pdata.push(d);
-        }
+        axios.get('http://localhost:8080/consultation/countDiagnostic')
+            .then((response) => {
+                const diagnosticMap = response.data;
+                const data = Object.keys(diagnosticMap).map(diagnosticName => ({
+                    name: diagnosticName,
+                    diagnostics: diagnosticMap[diagnosticName]
+                }));
+                this.setState({ data }, () => {
+                    console.log(this.state.data);
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
-
+    
     render() {
         return (
-            <div style={{width: '1000px', height: '1000px'}}>
+            <div style={{width: '50%', height: '50%'}} className='alignChart'>
                 <ResponsiveContainer width="100%" aspect={3}>
-                    <LineChart data={pdata} margin={{right: 300}}>
+                    <LineChart data={this.state.data} margin={{right: 300}}>
                         <CartesianGrid/>
-                        <XAxis dataKey="name"
-                               interval={'preserveStartEnd'}/>
-                        <YAxis></YAxis>
+                        <XAxis dataKey="name" interval={'preserveStartEnd'}/>
+                        <YAxis/>
                         <Legend/>
                         <Tooltip/>
-                        <Line dataKey="hour"
-                              stroke="black" activeDot={{r: 8}}/>
-                        <Line dataKey="consumption"
-                              stroke="red" activeDot={{r: 8}}/>
+                        <Line dataKey="diagnostics" stroke="#90EE90" activeDot={{r: 8}}/>
                     </LineChart>
                 </ResponsiveContainer>
             </div>
@@ -49,4 +45,4 @@ class Chart extends React.Component {
     }
 }
 
-export default Chart
+export default Chart;

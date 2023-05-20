@@ -14,7 +14,9 @@ function DoctorNavBar(){
                 <Nav.Link href="/SeePatients">Make a consultation</Nav.Link>
                 </Nav>
                     <Nav className="justify-content-end">
+                    <Nav.Link href="/Reset">Reset Password</Nav.Link>
                         <Nav.Link href="/">Log Out</Nav.Link>
+                        
                     </Nav>
         </Navbar>
     )

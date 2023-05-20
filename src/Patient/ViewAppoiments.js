@@ -128,23 +128,7 @@ class ViewAppoiments extends React.Component {
                           defaultPageSize={10}
                           data={this.state.appointments}
                           columns={[
-                            {
-                              Header: "",
-                              accessor: "checkbox",
-                              Cell: rowInfo => (
-                                <div>
-                                  <input
-                                    type="checkbox"
-                                    checked={this.state.selected === rowInfo.index}
-                                    onChange={() =>
-                                      this.setState({
-                                        selected: rowInfo.index
-                                      })
-                                    }
-                                  />
-                                </div>
-                              )
-                            },
+                            
                             {
                               Header: "Doctor Name",
                               accessor: "doctor",
@@ -195,7 +179,7 @@ class ViewAppoiments extends React.Component {
                         <br />
                         {this.state.selected >= 0 && (
                           <div className="container">
-                           <button className="button3" onClick={this.handleUpdate}>Update</button>
+                           
                         </div>
                       
                         )}
