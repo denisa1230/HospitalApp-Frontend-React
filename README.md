@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+#HospitalApp-Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The application for managing a hospital has been implemented on the frontend using React. It is based on HTML, JavaScript, and CSS languages,
+but also includes certain predefined elements that assist us in styling the web pages.
 
-## Available Scripts
+#Application functionality
 
-In the project directory, you can run:
+In the application, we have multiple types of users such as the administrator, doctor, and patient, providing various functionalities.
+The hospital administrator can manage everything happening in the backend of the medical system, including adding, updating, or deleting hospitals, departments, diagnoses, or medications. 
+They can also create accounts for doctors to prevent unauthorized users from falsely claiming to be medical professionals. 
+Additionally, the administrator can approve or disapprove medications or diagnoses proposed by doctors. 
+The application also provides a page with hospital statistics, presenting three graphs related to the most used diagnoses and medications, as well as the trend of appointment numbers based on months of the year. 
+This information can provide valuable insights for process improvement and the quality of medical services offered.
 
-### `npm start`
+Upon authentication, the patient is directed to the main page where they are allowed to view and update their personal data. 
+They can also access their consultation history at the hospital and prescriptions with prescribed medications at that time. 
+Moreover, to schedule appointments at the hospital, the patient benefits from a simplified process, easily seeing the availability of doctors.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Similarly to the patient, the doctor is directed to their own profile upon logging into their account. 
+They can update their profile and add new information.
+Additionally, the doctor can suggest new medications or diagnoses if they are not found in the database and are required to prescribe a medical prescription.
+The doctor also has the ability to accept or reject appointments made by patients based on their availability. 
+Moreover, they can conduct medical consultations and examinations.
+All of these functions are essential for ensuring efficient and quality care.
